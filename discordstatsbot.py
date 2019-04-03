@@ -17,8 +17,8 @@ neshto='445198123837554688'
 @client.event
 async def on_ready():
 	print('Bot is online')
-	print(bot.user.name)
-	print(bot.user.id)
+	print(client.user.name)
+	print(client.user.id)
 	await client.change_presence(game=discord.Game(name='ds!serverinfo',type=0))
 
 @client.command(pass_context=True)  
