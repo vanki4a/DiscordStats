@@ -114,4 +114,4 @@ async def invite():
 	await client.say(':gift:')
 	await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
   
-  client.run(os.getenv('Token'))
+client.run(os.getenv('Token'))
