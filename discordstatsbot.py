@@ -71,7 +71,7 @@ async def membercount(ctx, *args):
     permissions of the guilds administrators!
     """
     if ctx.message.channel.is_private:
-        await bot.delete_message(ctx.message)
+        await client.delete_message(ctx.message)
         return
 
     g = ctx.message.server
@@ -109,7 +109,7 @@ async def userinfo(ctx, user: discord.Member):
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
    
-@bot.command()
+@client.command()
 async def invite():
 	await client.say(':gift:')
 	await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
