@@ -132,7 +132,6 @@ async def embed(ctx, *args):
     text = argstr
     color = discord.Color((r << 16) + (g << 8) + b)
     await client.send_message(ctx.message.channel, embed=Embed(color = color, description=text))
-    
 
 @client.command()
 async def invite():
