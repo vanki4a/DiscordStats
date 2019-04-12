@@ -115,6 +115,26 @@ async def setnick(ctx, user: discord.Member, *, nickname):
     await client.change_nickname(user, nickname)
     await client.delete_message(ctx.message)
 
+@client.command(pass_context=True)  
+@commands.has_permissions(ban_members=True)      
+async def ban(ctx,user:discord.Member):
+
+    if user.server_permissions.ban_members:
+        await client.say('**He is mod/admin and i am unable to ban him/her**')
+        return
+
+    try:
+        await client.ban(user)
+        await client.say(user.name+' was banned. Goodbye. '+user.name+'!')
+
+    except discord.Forbidden:
+
+        await client.say('Permission denied.')
+        return
+    except discord.HTTPException:
+        await client.say('ban failed.')
+        return
+	
 @client.command()
 async def invite():
 	await client.say(':gift:')
