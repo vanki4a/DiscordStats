@@ -19,7 +19,7 @@ async def on_ready():
 	print('Bot is online')
 	print(client.user.name)
 	print(client.user.id)
-	await client.change_presence(game=discord.Game(name='ds!help',type=3))
+	await client.change_presence(game=discord.Game(name='my idiot dev playing League of Legends',type=1))
 
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
