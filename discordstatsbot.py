@@ -121,7 +121,7 @@ async def embed(ctx, *args):
     color = discord.Color((r << 16) + (g << 8) + b)
     await client.send_message(ctx.message.channel, embed=Embed(color = color, description=text))
     
-@client.command(pass_context=True)
+    @client.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 async def embed(ctx,*args):
     """
