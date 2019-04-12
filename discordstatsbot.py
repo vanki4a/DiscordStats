@@ -108,8 +108,8 @@ async def userinfo(ctx, user: discord.Member):
     embed.add_field(name="``Joined``", value=user.joined_at)
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
-   
-	@client.command(pass_context=True)
+ 
+@client.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 async def embed(ctx, *args):
     """
