@@ -109,6 +109,12 @@ async def userinfo(ctx, user: discord.Member):
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
 
+@client.command(pass_context = True)
+@commands.has_permissions(manage_nicknames=True)     
+async def setnick(ctx, user: discord.Member, *, nickname):
+    await client.change_nickname(user, nickname)
+    await client.delete_message(ctx.message)
+
 @client.command()
 async def invite():
 	await client.say(':gift:')
