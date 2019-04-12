@@ -143,6 +143,31 @@ async def bans(ctx):
     x = '\n'.join([y.name for y in x])
     embed = discord.Embed(title = "List of The Banned Idiots", description = x, color = 0xFFFFF)
     return await client.say(embed = embed)
+
+client.command(pass_context=True)  
+@commands.has_permissions(ban_members=True)     
+
+
+async def unban(ctx):
+    ban_list = await client.get_bans(ctx.message.server)
+
+    # Show banned users
+    await client.say("Ban list:\n{}".format("\n".join([user.name for user in ban_list])))
+
+    # Unban last banned user
+    if not ban_list:
+    	
+        await client.say('Ban list is empty.')
+        return
+    try:
+        await client.unban(ctx.message.server, ban_list[-1])
+        await client.say('Unbanned user: `{}`'.format(ban_list[-1].name))
+    except discord.Forbidden:
+        await client.say('Permission denied.')
+        return
+    except discord.HTTPException:
+        await client.say('unban failed.')
+        return
 	
 @client.command()
 async def invite():
