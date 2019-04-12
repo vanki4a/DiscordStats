@@ -135,7 +135,7 @@ async def ban(ctx,user:discord.Member):
         await client.say('ban failed.')
         return
 
-client.command(pass_context = True)
+@client.command(pass_context = True)
 @commands.has_permissions(administrator=True) 
 async def bans(ctx):
     '''Gets A List Of Users Who Are No Longer With us'''
