@@ -109,6 +109,31 @@ async def userinfo(ctx, user: discord.Member):
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
    
+	@client.command(pass_context=True)
+@commands.has_permissions(administrator=True)
+async def embed(ctx, *args):
+    """
+    Sending embeded messages with color (and maby later title, footer and fields)
+    """
+    argstr = " ".join(args)
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    text = argstr
+    color = discord.Color((r << 16) + (g << 8) + b)
+    await client.send_message(ctx.message.channel, embed=Embed(color = color, description=text))
+    
+@client.command(pass_context=True)
+@commands.has_permissions(administrator=True)
+async def embed(ctx, *args):
+    """
+    Sending embeded messages with color (and maby later title, footer and fields)
+    """
+    argstr = " ".join(args)
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    text = argstr
+    color = discord.Color((r << 16) + (g << 8) + b)
+    await client.send_message(ctx.message.channel, embed=Embed(color = color, description=text))
+    
+
 @client.command()
 async def invite():
 	await client.say(':gift:')
