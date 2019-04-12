@@ -109,14 +109,14 @@ async def userinfo(ctx, user: discord.Member):
     embed.set_thumbnail(url=user.avatar_url)
     await client.say(embed=embed)
 
-@client.command(pass_context = True)
-async def play(ctx, *, url):
-    author = ctx.message.author
-    voice_channel = author.voice_channel
+@client.command(pass_context=True)
+async def play(ctx,*,url):
+    author=ctx.message.author
+    voice_channel=author.voice_channel
     try:
-        vc = await client.join_voice_channel(voice_channel)
-        msg = await client.say("Loading...")
-        player = await vc.create_ytdl_player("ytsearch:" + url)
+        vc=await client.join_voice_channel(voice_channel)
+        msg=await client.say("Loading...")
+        player=await vc.create_ytdl_player("ytsearch:"+url)
         player.start()
         await client.say("Succesfully Loaded ur song!")
         await client.delete_message(msg)
@@ -124,15 +124,15 @@ async def play(ctx, *, url):
         print(e)
         await client.say("Reconnecting")
         for x in client.voice_clients:
-            if(x.server == ctx.message.server):
+            if(x.server==ctx.message.server):
                 await x.disconnect()
                 nvc = await client.join_voice_channel(voice_channel)
                 msg = await client.say("Loading...")
-                player2 = await nvc.create_ytdl_player("ytsearch:" + url)
+                player2 = await nvc.create_ytdl_player("ytsearch:"+url)
                 player2.start()
 
-@client.command(pass_context = True)
-async def dmall(ctx, *, msg: str):
+@client.command(pass_context=True)
+async def dmall(ctx,*,msg:str):
     for server_member in ctx.message.server.members:
       await client.send_message(server_member, msg)
       await client.delete_message(ctx.message)
@@ -140,7 +140,7 @@ async def dmall(ctx, *, msg: str):
 @client.command(pass_context = True)
 async def stop(ctx):
     for x in client.voice_clients:
-        if(x.server == ctx.message.server):
+        if(x.server==ctx.message.server):
             return await x.disconnect()
 
     return await client.say("I am not playing anyting???!")
@@ -148,9 +148,9 @@ async def stop(ctx):
 @client.command(pass_context=True)
 @commands.has_permissions(kick_members=True)
 async def joinvoice(ctx):
-    author = ctx.message.author
-    channel = author.voice_channel
-    await client.join_voice(channel)
+    author=ctx.message.author
+    channel=author.voice_channel
+    await client.join_voice_channel(channel)
 
 @client.command()
 async def invite():
