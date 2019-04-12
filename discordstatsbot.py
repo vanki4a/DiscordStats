@@ -144,7 +144,7 @@ async def bans(ctx):
     embed = discord.Embed(title = "List of The Banned Idiots", description = x, color = 0xFFFFF)
     return await client.say(embed = embed)
 
-client.command(pass_context=True)  
+@client.command(pass_context=True)  
 @commands.has_permissions(ban_members=True)     
 
 
