@@ -121,7 +121,6 @@ async def play(ctx,*,url):
         await client.say("Succesfully Loaded ur song!")
         await client.delete_message(msg)
     except Exception as e:
-        print(e)
         await client.say("Reconnecting")
         for x in client.voice_clients:
             if(x.server==ctx.message.server):
