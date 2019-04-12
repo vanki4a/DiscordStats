@@ -150,7 +150,7 @@ async def stop(ctx):
 async def joinvoice(ctx):
     author = ctx.message.author
     channel = author.voice_channel
-    await client.join_voice_channel(channel)
+    await client.join_voice(channel)
 
 @client.command()
 async def invite():
