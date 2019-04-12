@@ -120,7 +120,7 @@ async def setnick(ctx, user: discord.Member, *, nickname):
 async def ban(ctx,user:discord.Member):
 
     if user.server_permissions.ban_members:
-        await client.say('**:x: I can't ban this user.**')
+        await client.say('**:x: I can`t ban this user.**')
         return
 
     try:
