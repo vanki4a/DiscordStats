@@ -178,20 +178,6 @@ async def unbanall(ctx):
     await client.say('Unbanning {} members'.format(len(ban_list)))
     for member in ban_list:
         await client.unban(server,member)
-
-@client.command(pass_context=True)
-async def registerme(ctx):
-    author = ctx.message.author
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(title="Successfully added", description="REGISTERED role", color = discord.Color((r << 16) + (g << 8) + b))
-    embed.set_image(url = 'https://preview.ibb.co/e3iyap/ezgif_3_7dcc4d6bec.gif')
-    embed.add_field(name="Enjoy! ", value="Thanks for registering in Server!", inline=True)
-    
-    await client.delete_message(ctx.message)
-    role = discord.utils.get(ctx.message.server.roles, name='W4w tourney')
-    await client.add_roles(ctx.message.author, role)
-    print('Added REGISTERED role in ' + (ctx.message.author.name))
-    await client.send_message(author, embed=embed)
 	
 @client.command()
 async def invite():
