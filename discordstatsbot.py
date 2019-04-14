@@ -179,6 +179,26 @@ async def unbanall(ctx):
     for member in ban_list:
         await client.unban(server,member)
 
+	
+@client.event
+async def on_member_join(member):
+    print("In our server" + member.name + " just joined")
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embed.set_author(name='Welcome message')
+    embed.add_field(name = '__Welcome to Our Server__',value ='**Hope you will be active here. Check Our server rules and never try to break any rules. ',inline = False)
+    embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
+    await client.send_message(member,embed=embed)
+    print("Sent message to " + member.name)
+    channel = discord.utils.get(client.get_all_channels(), server__name='DarkBot Official Server', name='darkbot-servers-join-leave-log')
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(title=f'Welcome {member.name} to {member.server.name}', description='Do not forget to check <#474572305192845312> and never try to break any one of them', color = discord.Color((r << 16) + (g << 8) + b))
+    embed.add_field(name='__Thanks for joining__', value='**Hope you will be active here.**', inline=True)
+    embed.add_field(name='Your join position is', value=member.joined_at)
+    embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
+    embed.set_thumbnail(url=member.avatar_url)
+    await client.send_message(channel, embed=embed)
+	
 @client.command()
 async def invite():
 	await client.say(':gift:')
