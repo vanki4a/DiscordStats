@@ -168,7 +168,17 @@ async def unban(ctx):
     except discord.HTTPException:
         await client.say('unban failed.')
         return
-	
+
+@client.command(pass_context=True)
+@commands.has_permissions(kick_members=True)
+
+async def unbanall(ctx):
+    server=ctx.message.server
+    ban_list=await client.get_bans(server)
+    await client.say('Unbanning {} members'.format(len(ban_list)))
+    for member in ban_list:
+        await client.unban(server,member)
+
 @client.command()
 async def invite():
 	await client.say(':gift:')
