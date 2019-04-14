@@ -194,6 +194,14 @@ async def role(ctx, user: discord.Member, *, role: discord.Role = None):
             await client.remove_roles(user, role)
             return await client.say("{} role has been removed from {}.".format(role, user))
  	
+@client.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+async def say(ctx, *, msg = None):
+    await client.delete_message(ctx.message)
+
+    if not msg: await client.say("Please specify a message to send")
+    else: await client.say(msg)
+    return
 	
 @client.command()
 async def invite():
