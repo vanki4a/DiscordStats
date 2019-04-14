@@ -11,7 +11,7 @@ import time
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
 
-client=commands.Bot(command_prefix='ds!')
+client=commands.Bot(command_prefix='/')
 neshto='445198123837554688'
 
 @client.event
@@ -19,7 +19,7 @@ async def on_ready():
 	print('Bot is online')
 	print(client.user.name)
 	print(client.user.id)
-	await client.change_presence(game=discord.Game(name='ds!help',type=3))
+	await client.change_presence(game=discord.Game(name='/help',type=3))
 
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
