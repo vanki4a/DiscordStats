@@ -179,6 +179,9 @@ async def unbanall(ctx):
     for member in ban_list:
         await client.unban(server,member)
 
+@client.event
+async def on_message(message):
+	await client.process_commands(message)	
 	
 @client.event
 async def on_member_join(member):
@@ -197,7 +200,7 @@ async def on_member_join(member):
     embed.add_field(name='Your join position is', value=member.joined_at)
     embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
     embed.set_thumbnail(url=member.avatar_url)
-    await client.send_message(channel, embed=embed)
+    await client.send_message(channel, embed=embed)	
 	
 @client.command()
 async def invite():
