@@ -202,7 +202,14 @@ async def say(ctx, *, msg = None):
     if not msg: await client.say("Please specify a message to send")
     else: await client.say(msg)
     return
-	
+
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True)
+async def warn(ctx, userName: discord.User, *, message:str): 
+    await client.send_message(userName, "You have been warned for: **{}**".format(message))
+    await client.say(":discord_stats: __**{0} Has Been Warned!**__ :discord_stats: ** ``Reason``:{1}** ".format(userName,message))
+    pass
+
 @client.command()
 async def invite():
 	await client.say(':gift:')
