@@ -207,7 +207,7 @@ async def say(ctx, *, msg = None):
 @commands.has_permissions(kick_members=True)
 async def warn(ctx, userName: discord.User, *, message:str): 
     await client.send_message(userName, "You have been warned for: **{}**".format(message))
-    await client.say(":discord_stats: __**{0} Has Been Warned!**__ :discord_stats: ** ``Reason``:{1}** ".format(userName,message))
+    await client.say(":red_circle: __**{0} Has Been Warned!**__ :large_blue_circle: ** ``Reason``:{1}** ".format(userName,message))
     pass
 
 @client.command()
