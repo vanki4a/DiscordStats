@@ -251,7 +251,16 @@ async def poll(ctx, question, *options: str):
             await client.add_reaction(react_message, reaction)
         embed.set_footer(text='Poll ID: {}'.format(react_message.id))
         await client.edit_message(react_message, embed=embed)
-        		
+	
+@client.command(pass_context=True)
+async def guess(ctx, number):
+    try:
+        arg = random.randint(1, 10)
+    except ValueError:
+        await client.say("Invalid number")
+    else:
+        await client.say('The correct answer is ' + str(arg))
+
 @client.command()
 async def invite():
 	await client.say(':gift:')
