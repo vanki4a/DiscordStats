@@ -227,6 +227,32 @@ async def clear(ctx, number):
  
     await client.delete_messages(mgs)
 
+@client.command(pass_context=True)
+async def poll(ctx, question, *options: str):
+        if len(options) <= 1:
+            await client.say('You need more than one option to make a poll!')
+            return
+        if len(options) > 10:
+            await client.say('You cannot make a poll for more than 10 things!')
+            return
+
+        if len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
+            reactions = ['👍', '👎']
+        else:
+            reactions = ['1\u20e3', '2\u20e3', '3\u20e3', '4\u20e3', '5\u20e3', '6\u20e3', '7\u20e3', '8\u20e3', '9\u20e3', '\U0001f51f']
+
+        description = []
+        for x, option in enumerate(options):
+            description += '\n {} {}'.format(reactions[x], option)
+            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+        embed = discord.Embed(title=question, description=''.join(description), color = discord.Color((r << 16) + (g << 8) + b))
+        react_message = await client.say(embed=embed)
+        for reaction in reactions[:len(options)]:
+            await client.add_reaction(react_message, reaction)
+        embed.set_footer(text='Poll ID: {}'.format(react_message.id))
+        await client.edit_message(react_message, embed=embed)
+        	
+	
 @client.command()
 async def invite():
 	await client.say(':gift:')
