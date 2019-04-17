@@ -260,12 +260,5 @@ async def guess(ctx, number):
         await client.say("Invalid number")
     else:
         await client.say('The correct answer is ' + str(arg))
-
-@client.command(pass_context = True)
-@commands.has_permissions(administrator=True)
-async def backup():
-    await client.delete_message(ctx.message)
-    await client.say('``Successfully backed up your server!``'
 	
-
 client.run(os.getenv('Token'))
