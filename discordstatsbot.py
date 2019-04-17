@@ -264,6 +264,6 @@ async def guess(ctx, number):
 @client.command()
 async def support():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
-else: await client.say(msg)
+       await client.say(msg)
 	
 client.run(os.getenv('Token'))
