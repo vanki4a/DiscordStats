@@ -261,6 +261,12 @@ async def guess(ctx, number):
     else:
         await client.say('The correct answer is ' + str(arg))
 
+@client.command(pass_context = True)
+@commands.has_permissions(administrator=True)
+async def backup(ctx, *, msg = None):
+    await client.delete_message(ctx.message)
+    await client.say('``Successfully backed up your server!``'
+	
 @client.command()
 async def invite():
 	await client.say(':gift:')
