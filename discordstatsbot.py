@@ -267,4 +267,5 @@ async def backup():
     await client.delete_message(ctx.message)
     await client.say('``Successfully backed up your server!``'
 	
+
 client.run(os.getenv('Token'))
