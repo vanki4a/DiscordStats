@@ -268,7 +268,7 @@ async def backup(ctx, *, msg = None):
     await client.say('``Successfully backed up your server!``'
 	
 @client.command()
- async def invite():
+async def invite(ctx, *, msg = None):
 	await client.say(':gift:')
 	await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
   
