@@ -125,7 +125,7 @@ async def ban(ctx,user:discord.Member):
 
     try:
         await client.ban(user)
-        await client.say(':white_check_mark:**This user was  banned!**')
+        await client.say('**:white_check_mark: This user was banned!**')
 
     except discord.Forbidden:
 
