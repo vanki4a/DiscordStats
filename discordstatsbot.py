@@ -267,12 +267,12 @@ async def guess(ctx, number):
 async def kick(ctx,user:discord.Member):
 
     if user.server_permissions.kick_members:
-        await client.say('**:x: This user is mod/admin and i am unable to kick him/**')
+        await client.say('**:x: This user is mod/admin and i am unable to kick him.**')
         return
     
     try:
         await client.kick(user)
-        await client.say(user.name+' Was kicked.'+user.name+'!')
+        await client.say(user.name+' :white_check_mark: **Was kicked.**')
         await client.delete_message(ctx.message)
 
     except discord.Forbidden:
