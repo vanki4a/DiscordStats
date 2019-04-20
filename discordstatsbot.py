@@ -267,17 +267,5 @@ async def guess(ctx, number):
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
        await client.say('https://discord.gg/gRVtKVA')
-
-@client.command()
-async def test(ctx):
-    pass
-
-# or:
-
-@commands.command()
-async def test(ctx):
-    pass
-
-client.add_command(test)
 	
 client.run(os.getenv('Token'))
