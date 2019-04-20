@@ -261,6 +261,22 @@ async def guess(ctx, number):
     else:
         await client.say('The correct answer is ' + str(arg))
 
+	from discord.ext import commands
+
+bot = commands.Bot(command_prefix='$')
+
+@client.command()
+async def test(ctx):
+    pass
+
+# or:
+
+@commands.command()
+async def test(ctx):
+    pass
+
+client.add_command(test)
+	
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
