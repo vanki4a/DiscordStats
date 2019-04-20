@@ -264,7 +264,7 @@ async def guess(ctx, number):
 
 @client.command(pass_context=True) 
 async def meme(ctx): 
-url = "https://api.imgflip.com/get_memes"
+url = ('https://api.imgflip.com/get_memes')
 response = urllib.urlopen(url)
 JSONVariable = json.loads(response.read())
 ImageTitle = JSONVariable['name'][0]
