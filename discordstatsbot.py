@@ -129,7 +129,7 @@ async def ban(ctx,user:discord.Member):
         await client.say(user.name+' **:white_check_mark: Successfully banned!**')
         await client.delete_message(ctx.message)
     
-   except discord.Forbidden:
+    except discord.Forbidden:
 
         await client.say('Permission denied.')
         return
