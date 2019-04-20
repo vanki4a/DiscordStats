@@ -273,7 +273,7 @@ async def kick(ctx,user:discord.Member):
     
     try:
         await client.kick(user)
-        await client.say(user.name+' :white_check_mark: **Successfully kicked!**')
+        await client.say(user ' :white_check_mark: **Successfully kicked!**')
         await client.delete_message(ctx.message)
 
     except discord.Forbidden:
