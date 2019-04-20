@@ -267,7 +267,7 @@ async def guess(ctx, number):
 async def kick(ctx,user:discord.Member):
 
     if user.server_permissions.kick_members:
-        await client.say('**:x: This user is mod/admin and i am unable to kick him.**')
+        await client.say('**:x: I can`t kick that user.**')
         return
     
     try:
