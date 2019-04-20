@@ -191,8 +191,9 @@ async def role(ctx, user: discord.Member, *, role: discord.Role = None):
         if role not in user.roles:
             await client.add_roles(user, role)
             return await client.say("{} ``role has been added to`` {}.".format(role, user))
-
-        if role in user.roles:
+            await client.delete_message(ctx.message)
+        
+	if role in user.roles:
             await client.remove_roles(user, role)
             return await client.say("{} ``role has been removed from`` {}.".format(role, user))
  	
