@@ -266,7 +266,7 @@ async def guess(ctx, number):
 async def meme(ctx): 
  url=('https://api.imgflip.com/get_memes')
  response=urllib.urlopen(url)
- JSONVariable=json.loads(response.read())
+ JSONVariable=json.loads(response.read)
  ImageTitle=JSONVariable['name'][0]
  ImageURL=JSONVariable['url'][0]
 	
