@@ -264,11 +264,11 @@ async def guess(ctx, number):
 
 @client.command(pass_context=True) 
 async def meme(ctx): 
-url = ('https://api.imgflip.com/get_memes')
-response = urllib.urlopen(url)
-JSONVariable = json.loads(response.read())
-ImageTitle = JSONVariable['name'][0]
-ImageURL = JSONVariable['url'][0]
+url=('https://api.imgflip.com/get_memes')
+response=urllib.urlopen(url)
+JSONVariable=json.loads(response.read())
+ImageTitle=JSONVariable['name'][0]
+ImageURL=JSONVariable['url'][0]
 	
 @client.command()
 async def invite():
