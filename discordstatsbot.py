@@ -260,8 +260,6 @@ async def guess(ctx, number):
         await client.say("Invalid number")
     else:
         await client.say('The correct answer is ' + str(arg))
-
-	from discord.ext import commands
 	
 @client.command()
 async def invite():
