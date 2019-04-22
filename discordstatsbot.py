@@ -281,8 +281,8 @@ async def kick(ctx,user:discord.Member):
         return	
 
 @client.command()
-async def add(ctx, a:int, b:int):
-        await ctx.send(a+b)
+async def add(ctx, a: int, b: int):
+       await ctx.send(a+b)
 
 @client.command()
 async def invite():
