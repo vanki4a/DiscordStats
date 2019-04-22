@@ -279,12 +279,6 @@ async def kick(ctx,user:discord.Member):
     except discord.Forbidden:
         await client.say('Permission denied.')
         return	
-
-@client.command(pass_context = True)
-async def dmall(ctx, *, msg: str):
-    for server_member in ctx.message.server.members:
-      await client.send_message(server_member, msg)
-      await client.delete_message(ctx.message)
 	
 @client.command()
 async def invite():
