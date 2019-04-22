@@ -12,7 +12,7 @@ import urllib, json
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
 
-client=commands.Bot(command_prefix='c!')
+client=commands.Bot(command_prefix='/')
 neshto='445198123837554688'
 
 @client.event
@@ -20,7 +20,7 @@ async def on_ready():
 	print('Bot is online')
 	print(client.user.name)
 	print(client.user.id)
-	await client.change_presence(game=discord.Game(name='c!help',type=2))
+	await client.change_presence(game=discord.Game(name='/chelp',type=2))
 
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
@@ -296,27 +296,27 @@ async def getuser(ctx, role: discord.Role = None):
         await client.say("Nobody has the role {}".format(role.mention))
 
 @client.command(pass_context = True)
-async def chelp(ctx):
+async def helps(ctx):
     author = ctx.message.author
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-    embed.add_field(name = 'c!poll',value ='Use it like ``c!poll "Question" "Option1" "Option2" ..... "Option9"``.',inline = False)
-    embed.add_field(name = 'c!guess',value ='To play guess game use ``c!guess <number> and number should be between 1-10``',inline = False)
-    embed.add_field(name = 'c!serverinfo',value = 'Information on your server.',inline = False)
-    embed.add_field(name = 'c!embed',value = 'Use "c!embed <text>"',inline = False)
-    embed.add_field(name = 'c!membercount',value = 'Show stats and information about current guilds.',inline = False)
-    embed.add_field(name = 'c!userinfo',value = 'Information for currnet user.',inline = False)
-    embed.add_field(name = 'c!setnick',value = 'Change user nick.',inline = False)
-    embed.add_field(name = 'c!ban',value = 'Use "c!ban <user>"',inline = False)
-    embed.add_field(name = 'c!unban',value = 'Use "c!unban <user>"',inline = False)
-    embed.add_field(name = 'c!bans',value = 'Gets a list of banned users.',inline = False)
-    embed.add_field(name = 'c!unbanall',value = 'Unban all users.',inline = False)
-    embed.add_field(name = 'c!role',value = 'Use "c!role <role>" give and remove user roles in your server.',inline = False)
-    embed.add_field(name = 'c!say',value = 'Use "c!say <text>" this text introduces it bot.',inline = False)
-    embed.add_field(name = 'c!clear',value = 'Clear message',inline = False)
-    embed.add_field(name = 'c!kick',value = 'Use "c!kick <user> <reason>".',inline = False)
-    embed.add_field(name = 'c!getuser',value = 'Use "c!getuser <role>" to get of all users having a particular role.',inline = False)
-    embed.add_field(name = 'c!invite',value = 'Invite bot in your server.',inline = False)
+    embed.add_field(name = '/poll',value ='Use it like ``c!poll "Question" "Option1" "Option2" ..... "Option9"``.',inline = False)
+    embed.add_field(name = '/guess',value ='To play guess game use ``c!guess <number> and number should be between 1-10``',inline = False)
+    embed.add_field(name = '/serverinfo',value = 'Information on your server.',inline = False)
+    embed.add_field(name = '/embed',value = 'Use "/embed <text>"',inline = False)
+    embed.add_field(name = '/membercount',value = 'Show stats and information about current guilds.',inline = False)
+    embed.add_field(name = '/userinfo',value = 'Information for currnet user.',inline = False)
+    embed.add_field(name = '/setnick',value = 'Change user nick.',inline = False)
+    embed.add_field(name = '/ban',value = 'Use "/ban <user>"',inline = False)
+    embed.add_field(name = '/unban',value = 'Use "/unban <user>"',inline = False)
+    embed.add_field(name = '/bans',value = 'Gets a list of banned users.',inline = False)
+    embed.add_field(name = '/unbanall',value = 'Unban all users.',inline = False)
+    embed.add_field(name = '/role',value = 'Use "/role <role>" give and remove user roles in your server.',inline = False)
+    embed.add_field(name = '/say',value = 'Use "/say <text>" this text introduces it bot.',inline = False)
+    embed.add_field(name = '/clear',value = 'Clear message',inline = False)
+    embed.add_field(name = '/kick',value = 'Use "/kick <user> <reason>".',inline = False)
+    embed.add_field(name = '/getuser',value = 'Use "/getuser <role>" to get of all users having a particular role.',inline = False)
+    embed.add_field(name = '/invite',value = 'Invite bot in your server.',inline = False)
     await client.send_message(author,embed=embed)
     await client.say('📨 Check DMs For Information')	
 	
