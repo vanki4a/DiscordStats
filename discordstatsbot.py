@@ -295,6 +295,26 @@ async def getuser(ctx, role: discord.Role = None):
     if empty:
         await client.say("Nobody has the role {}".format(role.mention))
 
+@client.command(pass_context = True)
+async def generalhelp(ctx):
+    author = ctx.message.author
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embed.add_field(name = '/poll',value ='Use it like ``/poll "Question" "Option1" "Option2" ..... "Option9"``.',inline = False)
+    embed.add_field(name = '/guess',value ='To play guess game use ``/guess <number> and number should be between 1-10``',inline = False)
+    embed.add_field(name = '/serverinfo',value = 'Information on your server.',inline = False)
+    embed.add_field(name = '/embed',value = 'Use "/embed <text>"',inline = False)
+    embed.add_field(name = '/membercount',value = 'Show stats and information about current guilds.',inline = False)
+    embed.add_field(name = '/userinfo',value = 'Information for currnet user.',inline = False)
+    embed.add_field(name = '/setnick',value = 'Change user nick.',inline = False)
+    embed.add_field(name = '/ban',value = 'Use "/ban <user>"',inline = False)
+    embed.add_field(name = '/unban',value = 'Use "/unban <user>"',inline = False)
+    embed.add_field(name = '/bans',value = 'Gets a list of banned users.',inline = False)
+    embed.add_field(name = '/unbanall',value = 'Unban all users.',inline = False)
+
+    await client.send_message(author,embed=embed)
+    await client.say('📨 Check DMs For Information')	
+	
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
