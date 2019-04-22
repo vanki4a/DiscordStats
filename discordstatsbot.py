@@ -279,7 +279,22 @@ async def kick(ctx,user:discord.Member):
     except discord.Forbidden:
         await client.say('Permission denied.')
         return	
+
 	
+@client.command(pass_context=True)  
+@commands.has_permissions(kick_members=True)
+async def getuser(ctx, role: discord.Role = None):
+    if role is None:
+        await client.say('There is no "STAFF" role on this server!')
+        return
+    empty = True
+    for member in ctx.message.server.members:
+        if role in member.roles:
+            await client.say("{0.name}: {0.id}".format(member))
+            empty = False
+    if empty:
+        await client.say("Nobody has the role {}".format(role.mention))
+
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
