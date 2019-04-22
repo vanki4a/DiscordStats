@@ -287,13 +287,13 @@ async def play(ctx, *, url):
     try:
         vc = await client.join_voice_channel(voice_channel)
         msg = await client.say("Loading...")
-        player = await vc.create_ytdl_player("ytsearch:" + url)
+        player = await vc.create_ytdl_player("**Youtube Search**" + url)
         player.start()
         await client.say("Succesfully Loaded ur song!")
         await client.delete_message(msg)
-    except Exception as Amnesia:
-        print(Amnesia)
-        await client.say("Reconnecting")
+    except Exception as e:
+        print(e)
+        await client.say("**Reconnecting...**")
         for x in client.voice_clients:
             if(x.server == ctx.message.server):
                 await x.disconnect()
