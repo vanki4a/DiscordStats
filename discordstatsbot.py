@@ -296,7 +296,7 @@ async def getuser(ctx, role: discord.Role = None):
         await client.say("Nobody has the role {}".format(role.mention))
 
 @client.command(pass_context = True)
-async def generalhelp(ctx):
+async def chelp(ctx):
     author = ctx.message.author
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
