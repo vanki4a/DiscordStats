@@ -291,7 +291,7 @@ async def play(ctx, *, url):
         player.start()
         await client.say("Succesfully Loaded ur song!")
         await client.delete_message(msg)
-    except Exception as :
+    except Exception as Amnesia:
         print(Amnesia)
         await client.say("Reconnecting")
         for x in client.voice_clients:
