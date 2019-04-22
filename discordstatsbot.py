@@ -12,7 +12,7 @@ import urllib, json
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
 
-client=commands.Bot(command_prefix='!')
+client=commands.Bot(command_prefix='c!')
 neshto='445198123837554688'
 
 @client.event
