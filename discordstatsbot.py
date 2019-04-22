@@ -281,10 +281,6 @@ async def kick(ctx,user:discord.Member):
         return	
 
 @client.command()
-async def add(ctx, a: int, b: int):
-       await ctx.send(a+b)
-
-@client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
        await client.say('https://discord.gg/gRVtKVA')
