@@ -314,6 +314,13 @@ async def stop(ctx):
         if(x.server == ctx.message.server):
             return await x.disconnect()
 
+@client.command(pass_context=True)
+@commands.has_permissions(kick_members=True)
+async def joinvoice(ctx):
+    author = ctx.message.author
+    channel = author.voice_channel
+    await client.join_voice_channel(channel)
+
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
