@@ -314,9 +314,9 @@ async def generalhelp(ctx):
     embed.add_field(name = '/role',value = 'Use "/role <role>" give and remove user roles in your server.',inline = False)
     embed.add_field(name = '/say',value = 'Use "/say <text>" this text introduces it bot.',inline = False)
     embed.add_field(name = '/clear',value = 'Clear message',inline = False)
-    embed.add_field(name = 'kick',value = 'User "/kick <user> <reason>".',inline = False)
-    embed.add_field(name = '/getuser',value = 
-
+    embed.add_field(name = 'kick',value = 'Use "/kick <user> <reason>".',inline = False)
+    embed.add_field(name = '/getuser',value = 'Use "/getuser <role>" to get of all users having a particular role.',inline = False)
+    embed.add_field(name = '/invite',value = 'Invite bot in your server.',inline = False)
     await client.send_message(author,embed=embed)
     await client.say('📨 Check DMs For Information')	
 	
