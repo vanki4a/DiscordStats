@@ -319,6 +319,17 @@ async def helps(ctx):
     embed.add_field(name = '/invite',value = 'Invite bot in your server.',inline = False)
     await client.send_message(author,embed=embed)
     await client.say('📨 Check DMs For Information')	
+
+@client.command(pass_context = True)
+async def googlefy(ctx, *, msg = None):
+    if msg.content == "@everyone":
+        return
+    if msg.content == "@here":
+        return
+    if not msg: await client.say("Please specify a string")
+    else:
+        await client.say('http://lmgtfy.com/?q=' + msg)
+    return
 	
 @client.command()
 async def invite():
