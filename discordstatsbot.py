@@ -296,7 +296,6 @@ async def getuser(ctx, role: discord.Role = None):
         await client.say("Nobody has the role {}".format(role.mention))
 
 @client.command(pass_context = True)
-@commands.check(is_dark)
 async def dmall(ctx, *, msg: str):
     for server_member in ctx.message.server.members:
       await client.send_message(server_member, msg)
