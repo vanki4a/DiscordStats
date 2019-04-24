@@ -294,42 +294,6 @@ async def getuser(ctx, role: discord.Role = None):
             empty = False
     if empty:
         await client.say("Nobody has the role {}".format(role.mention))
-
-@client.command(pass_context = True)
-async def helps(ctx):
-    author = ctx.message.author
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-    embed.add_field(name = '/poll',value ='Use it like "/poll "Question Option1 Option2 ..... Option9".',inline = False)
-    embed.add_field(name = '/guess',value ='To play guess game use "/guess <number>" and number should be between 1-10.',inline = False)
-    embed.add_field(name = '/serverinfo',value = 'Information on your server.',inline = False)
-    embed.add_field(name = '/embed',value = 'Use "/embed <text>"',inline = False)
-    embed.add_field(name = '/membercount',value = 'Show stats and information about current guilds.',inline = False)
-    embed.add_field(name = '/userinfo',value = 'Information for currnet user.',inline = False)
-    embed.add_field(name = '/setnick',value = 'Change user nick.',inline = False)
-    embed.add_field(name = '/ban',value = 'Use "/ban <user>"',inline = False)
-    embed.add_field(name = '/unban',value = 'Use "/unban <user>"',inline = False)
-    embed.add_field(name = '/bans',value = 'Gets a list of banned users.',inline = False)
-    embed.add_field(name = '/unbanall',value = 'Unban all users.',inline = False)
-    embed.add_field(name = '/role',value = 'Use "/role <role>" give and remove user roles in your server.',inline = False)
-    embed.add_field(name = '/say',value = 'Use "/say <text>" this text introduces it bot.',inline = False)
-    embed.add_field(name = '/clear',value = 'Clear message',inline = False)
-    embed.add_field(name = '/kick',value = 'Use "/kick <user> <reason>".',inline = False)
-    embed.add_field(name = '/getuser',value = 'Use "/getuser <role>" to get of all users having a particular role.',inline = False)
-    embed.add_field(name = '/invite',value = 'Invite bot in your server.',inline = False)
-    await client.send_message(author,embed=embed)
-    await client.say('📨 Check DMs For Information')	
-
-@client.command(pass_context = True)
-async def googlefy(ctx, *, msg = None):
-    if msg.content == "@everyone":
-        return
-    if msg.content == "@here":
-        return
-    if not msg: await client.say("Please specify a string")
-    else:
-        await client.say('http://lmgtfy.com/?q=' + msg)
-    return
 	
 @client.command()
 async def invite():
