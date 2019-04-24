@@ -297,7 +297,7 @@ async def getuser(ctx, role: discord.Role = None):
 
 @client.command(pass_context = True)
 async def dmall(ctx, *, msg: str):
-    for server_member in ctx.message.server.members:
+   for server_member in ctx.message.server.members:
       await client.send_message(server_member, msg)
       await client.delete_message(ctx.message)	
 	
