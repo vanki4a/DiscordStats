@@ -304,7 +304,17 @@ async def rules(ctx, *, msg = None):
     if not msg: await client.say("Please specify a user to warn")
     else: await client.say(msg + ', Please Read Rules again and never break any one of them again otherwise i will mute/kick/ban you next time.')
     return
-	
+
+@client.command(pass_context=True)
+@commands.has_permissions(kick_members=True) 
+async def roles(context):
+	"""Displays all of the roles with their ids"""
+	roles = context.message.server.roles
+	result = "The roles are "
+	for role in roles:
+		result += '``' + role.name + '``' + ": " + '``' + role.id + '``' + "\n "
+	await client.say(result)
+
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
