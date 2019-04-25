@@ -294,6 +294,16 @@ async def getuser(ctx, role: discord.Role = None):
             empty = False
     if empty:
         await client.say("Nobody has the role {}".format(role.mention))
+
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True)
+async def rules(ctx, *, msg = None):
+    await client.delete_message(ctx.message)
+    if '@here' in msg or '@everyone' in msg:
+      return
+    if not msg: await client.say("Please specify a user to warn")
+    else: await client.say(msg + ', Please Read Rules again and never break any one of them again otherwise i will mute/kick/ban you next time.')
+    return
 	
 @client.command()
 async def invite():
