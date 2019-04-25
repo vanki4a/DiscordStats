@@ -310,9 +310,9 @@ async def rules(ctx, *, msg = None):
 async def roles(context):
 	"""Displays all of the roles with their ids"""
 	roles = context.message.server.roles
-	result = "The roles are "
+	result = "**__The roles are__** "
 	for role in roles:
-		result += '**' + role.name + '**' + "``<->``" + '**' + role.id + '**' + "\n "
+		result += '**' + role.name + '```' + "**<->**" + '```' + role.id + '```' + "\n "
 	await client.say(result)
 
 @client.command()
