@@ -20,7 +20,7 @@ async def on_ready():
 	print('Bot is online')
 	print(client.user.name)
 	print(client.user.id)
-	await client.change_presence(game=discord.Game(name='Serhat Durmus - La Călin (Dabro Remix) /help',type=1))
+	await client.change_presence(game=discord.Game(name='Serhat Durmus - La Călin (Dabro Remix) | /help',type=1))
 
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
