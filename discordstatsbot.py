@@ -39,7 +39,7 @@ async def on_member_join(member):
     embed.add_field(name='Your join position is', value=member.joined_at)
     embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
     embed.set_thumbnail(url=member.avatar_url)
-      await client.send_message(channel, embed=embed)
+    await client.send_message(channel, embed=embed)
 	
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
