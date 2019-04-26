@@ -311,7 +311,12 @@ async def roles(context):
 	for role in roles:
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)		
-	
+@client.command(pass_context = True)
+async def avatar():
+
+  if msg.content.startsWith('avatar')  
+await client.send_message(msg.channel,msg.author.avatar.url)
+
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
