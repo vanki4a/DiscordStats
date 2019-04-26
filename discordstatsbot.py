@@ -311,8 +311,9 @@ async def roles(context):
 	for role in roles:
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)		
+
 @client.command(pass_context = True)
-async def avatar():
+async def avatar(context):
 
   if msg.content.startsWith('avatar')  
 await client.send_message(msg.channel,msg.author.avatar.url)
