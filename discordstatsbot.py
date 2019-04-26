@@ -297,16 +297,6 @@ async def getuser(ctx, role: discord.Role = None):
 
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
-async def rules(ctx, *, msg = None):
-    await client.delete_message(ctx.message)
-    if '@here' in msg or '@everyone' in msg:
-      return
-    if not msg: await client.say("Please specify a user to warn")
-    else: await client.say(msg + ', Please Read Rules again and never break any one of them again otherwise i will mute/kick/ban you next time.')
-    return
-
-@client.command(pass_context = True)
-@commands.has_permissions(kick_members=True)
 async def warn(ctx, userName: discord.User, *, message:str): 
     await client.send_message(userName, "You have been warned for ``<->`` **{}**".format(message))
     await client.say(":white_check_mark: {0} Has been warned! Reason ``<->`` **{1}** ".format(userName,message))
