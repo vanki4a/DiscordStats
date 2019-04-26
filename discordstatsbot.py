@@ -308,6 +308,11 @@ async def rules(ctx, *, msg = None):
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
 async def warn(ctx, userName: discord.User, *, message:str): 
+	
+    if user.server_permissions.ban_members:
+        await client.say('**:x: I can`t warn this user.**')
+        return
+	
     await client.send_message(userName, "You have been warned for: **{}**".format(message))
     await client.say(":white_check_mark: {0} Has been warned! Reason``<->`` **{1}** ".format(userName,message))
     pass
