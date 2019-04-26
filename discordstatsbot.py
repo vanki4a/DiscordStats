@@ -309,7 +309,7 @@ async def rules(ctx, *, msg = None):
 @commands.has_permissions(kick_members=True)
 async def warn(ctx, userName: discord.User, *, message:str): 
 	
-    if user.server_permissions.ban_members:
+    if user.server_permissions.warn_members:
         await client.say('**:x: I can`t warn this user.**')
         return
 	
