@@ -316,6 +316,5 @@ async def roles(context):
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
        await client.say('https://discord.gg/gRVtKVA')
-       embed.set_thumbnail(url=member.avatar_url)
-
+      
 client.run(os.getenv('Token'))
