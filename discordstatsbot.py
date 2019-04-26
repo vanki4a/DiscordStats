@@ -305,6 +305,13 @@ async def rules(ctx, *, msg = None):
     else: await client.say(msg + ', Please Read Rules again and never break any one of them again otherwise i will mute/kick/ban you next time.')
     return
 
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True)
+async def warn(ctx, userName: discord.User, *, message:str): 
+    await client.send_message(userName, "You have been warned for: **{}**".format(message))
+    await client.say(":white_check_mark: __{0} Has Been Warned!__ ** Reason:{1}** ".format(userName,message))
+    pass
+
 @client.command(pass_context=True)
 @commands.has_permissions(kick_members=True) 
 async def roles(context):
@@ -314,7 +321,7 @@ async def roles(context):
 	for role in roles:
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)
-
+	
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
