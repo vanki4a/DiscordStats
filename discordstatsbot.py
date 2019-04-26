@@ -30,7 +30,7 @@ async def on_member_join(member):
     embed.set_author(name='Welcome message')
     embed.add_field(name = '__Welcome to Our Server__',value ='**Hope you will be active here. Check Our server rules and never try to break any rules. ',inline = False)
     embed.set_image(url = 'https://media.giphy.com/media/OkJat1YNdoD3W/giphy.gif')
-      await client.send_message(member,embed=embed)
+    await client.send_message(member,embed=embed)
     print("Sent message to " + member.name)
     channel = discord.utils.get(client.get_all_channels(), server__name='DarkBot Official Server', name='darkbot-servers-join-leave-log')
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
