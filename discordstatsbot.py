@@ -315,7 +315,6 @@ async def roles(context):
 @client.command(pass_context = True)
 async def site(ctx):
     author = ctx.message.author
-   embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
    embed.add_field(name = '**CarbonBot offical site**',value ='Click -> kinysite.weebly.com',inline = False)
     
 @client.command()
