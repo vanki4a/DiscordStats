@@ -311,7 +311,14 @@ async def roles(context):
 	for role in roles:
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)		
-	
+
+@client.command(pass_context = True)
+async def site(ctx):
+    author = ctx.message.author
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+   embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+   embed.add_field(name = '**CarbonBot offical site**',value ='Click -> kinysite.weebly.com',inline = False)
+    
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
