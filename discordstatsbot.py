@@ -312,11 +312,6 @@ async def roles(context):
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)		
 
-@client.command(pass_context = True)
-async def site(ctx):
-    author = ctx.message.author
-    embed.add_field(name = '**CarbonBot offical site**',value ='Click -> kinysite.weebly.com',inline = False)
-    
 @client.command()
 async def invite():
        author = ctx.message.author
