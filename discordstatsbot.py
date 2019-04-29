@@ -314,7 +314,6 @@ async def roles(context):
 
 @client.command()
 async def invite():
-       author = ctx.message.author
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
        await client.say('https://discord.gg/gRVtKVA')
       
