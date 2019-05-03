@@ -21,7 +21,6 @@ async def on_ready():
 	print(client.user.name)
 	print(client.user.id)
         await client.change_presence(game=discord.Game(name='in '+str(len(client.servers))+' servers'))
-        await asyncio.sleep(5)	
 	
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
