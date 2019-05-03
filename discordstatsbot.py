@@ -20,15 +20,6 @@ async def on_ready():
 	print('Bot is online')
 	print(client.user.name)
 	print(client.user.id)
-
-	
-	
-async def status_task():
-    while True:
-        await client.change_presence(game=discord.Game(name='Type /help'))
-        await asyncio.sleep(5)
-        await client.change_presence(game=discord.Game(name='with '+str(len(set(client.get_all_members())))+' users'))
-        await asyncio.sleep(5)
         await client.change_presence(game=discord.Game(name='in '+str(len(client.servers))+' servers'))
         await asyncio.sleep(5)
 	
