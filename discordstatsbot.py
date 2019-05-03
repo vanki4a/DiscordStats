@@ -25,6 +25,15 @@ async def on_ready():
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
 
+async def status_task():
+    while True:
+        await client.change_presence(game=discord.Game(name='Type /help'))
+        await asyncio.sleep(5)
+        await client.change_presence(game=discord.Game(name='with '+str(len(set(client.get_all_members())))+' users'))
+        await asyncio.sleep(5)
+        await client.change_presence(game=discord.Game(name='in '+str(len(client.servers))+' servers'))
+        await asyncio.sleep(5)
+
 async def serverinfo(ctx):
     '''Displays Info About The Server!'''
 
