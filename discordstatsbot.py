@@ -14,13 +14,26 @@ from discord import Game, Embed, Color, Status, ChannelType
 
 client=commands.Bot(command_prefix='/')
 neshto='445198123837554688'
+
+
+async def status_task():
+    while True:
+        await client.change_presence(game=discord.Game(name='For commands /help'))
+        await asyncio.sleep(5)
+        await client.change_presence(game=discord.Game(name='with '+str(len(set(client.get_all_members())))+' users',type=2))
+        await asyncio.sleep(5)
+        await client.change_presence(game=discord.Game(name='in '+str(len(client.servers))+' servers',type=3))
+        await asyncio.sleep(5)
+	
+
 	
 @client.event
 async def on_ready():
 	print('Bot is online')
 	print(client.user.name)
-	print(client.user.id)
-      await client.change_presence(game=discord.Game(name='in '+str(len(client.servers))+' servers',type=3))
+	print(client.user.id)      
+	client.loop.create_task(status_task())
+	
 	
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
