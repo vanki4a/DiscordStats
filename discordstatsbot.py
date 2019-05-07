@@ -321,6 +321,18 @@ async def roles(context):
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)		
 
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True) 
+
+@commands.cooldown(rate=5,per=86400,type=BucketType.user) 
+async def access(ctx, member: discord.Member):
+    role = discord.utils.get(member.server.roles, name='Access')
+    await client.add_roles(member, role)
+    embed=discord.Embed(title="User Got Access!", description="**{0}** got access from **{1}**!".format(member, ctx.message.author), color=0xff00f6)
+    await client.say(embed=embed)
+    await asyncio.sleep(45*60)
+    await client.remove_roles(member, role)	
+	
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
