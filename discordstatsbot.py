@@ -324,7 +324,8 @@ async def roles(context):
 @client.command(pass_context=True)
 async def pizza(ctx):
     author = ctx.message.author
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))   
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1)) 
+    embed.set_author(name='**Eat this!**')
     embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
     embed.add_field(user.name = ' you got :pizza: ',value = ':clap:',inline = False)
 
