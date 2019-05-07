@@ -321,6 +321,12 @@ async def roles(context):
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)		
 
+@client.command(pass_context=True)
+async def pizza(ctx):
+embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+embed.add_field(user.name = ', you got 🍕 ',value ='from',user.name = inline = False)
+
+
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
