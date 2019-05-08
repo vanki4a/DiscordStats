@@ -127,14 +127,14 @@ async def setnick(ctx, user: discord.Member, *, nickname):
 
 @client.command(pass_context=True)  
 @commands.has_permissions(ban_members=True)      
-async def ban(ctx, userName: discord.User, *, message:str): 
+async def ban(ctx,user:discord.Member): 
     if user.server_permissions.ban_members:
         await client.say('**:x: I can`t ban this user.**')
         return
 
     try:
         await client.ban(user)
-        await client.say(user.name+' **:white_check_mark: Successfully banned!**')
+        await client.say(user.name+' **:white_check_mark: Successfully banned!**'.format(userName,message))
         await client.delete_message(ctx.message)
     
     except discord.Forbidden:
