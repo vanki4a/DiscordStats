@@ -326,63 +326,6 @@ async def square(number):
     squared_value = int(number) * int(number)
     await client.say(str(number) + " squared is " + str(squared_value))
 
-	etails
-
-Skip to main content
-Home Toggle navigation
-Make a Discord Bot with Python - Part 2
- 
-Important note: The discord.py version used here is 0.16.12. The version of Python used is 3.6. Python 3.7 introduced backwards incompatible changes with async. The new version of discord.py 1.0 is also incompatible with this code here. Make sure you follow the instructions closely and ensure you have the proper versions. discord.py==0.16.12, python<3.7.
-If you don't already have a Discord server and a bot, you might want to check out Making a Discord Bot in Python - Part 1 which covers how to create a server, create a Discord app, create a bot user, authorize the bot for your server, and test it all with a Python script. This assumes you already have a bot account ready to go.
-
-If you are interested in learning how to make a Discord bot in JavaScript, check out the JavaScript Discord Bot Tutorial and check out all of the other Discord related tutorials on DevDungeon.
-
-If you want to check out some bots that are already made, check out two DevDungeon projects: Chatty Cathy AI chat bot and Help Desk Bot a fun utility bot, both written in Python.
-
-Run pip install from your system terminal/shell/command prompt. Make sure to install the correct version of the package. If you are using PyCharm you can open the terminal from View -> Tool Windows -> Terminal
-
-python -m pip install discord.py==0.16.12
-Bot Code
-# Work with Python 3.6
-import random
-import asyncio
-import aiohttp
-import json
-from discord import Game
-from discord.ext.commands import Bot
-
-BOT_PREFIX = ("?", "!")
-TOKEN = "XXXXSECRET_TOKENXXXXXXX"  # Get at discordapp.com/developers/applications/me
-
-client = Bot(command_prefix=BOT_PREFIX)
-
-@client.command(name='8ball',
-                description="Answers a yes/no question.",
-                brief="Answers from the beyond.",
-                aliases=['eight_ball', 'eightball', '8-ball'],
-                pass_context=True)
-async def eight_ball(context):
-    possible_responses = [
-        'That is a resounding no',
-        'It is not looking likely',
-        'Too hard to tell',
-        'It is quite possible',
-        'Definitely',
-    ]
-    await client.say(random.choice(possible_responses) + ", " + context.message.author.mention)
-
-
-@client.command()
-async def square(number):
-    squared_value = int(number) * int(number)
-    await client.say(str(number) + " squared is " + str(squared_value))
-
-
-@client.event
-async def on_ready():
-    await client.change_presence(game=Game(name="with humans"))
-    print("Logged in as " + client.user.name)
-
 
 @client.command()
 async def bitcoin():
