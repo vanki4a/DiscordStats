@@ -319,6 +319,11 @@ async def roles(context):
 	for role in roles:
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)		
+
+@client.command()
+async def square(number):
+    squared_value = int(number) * int(number)
+    await client.say(str(number) + " squared is " + str(squared_value))
 	
 @client.command()
 async def invite():
