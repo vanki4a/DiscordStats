@@ -319,12 +319,16 @@ async def roles(context):
 	for role in roles:
 		result += '``' + role.name + '``' + "<->" + '``' + role.id + '``' + "\n "
 	await client.say(result)		
-
 	
 @client.command()
 async def square(number):
     squared_value = int(number) * int(number)
     await client.say(str(number) + " squared is " + str(squared_value))
+
+@client.command(pass_context=True, no_pm=True)
+async def avatar(ctx, member: discord.Member):
+    """User Avatar"""
+    await client.reply("{}".format(member.avatar_url))	
 	
 @client.command()
 async def invite():
