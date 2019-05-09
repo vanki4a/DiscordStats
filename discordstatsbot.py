@@ -329,6 +329,12 @@ async def square(number):
 async def avatar(ctx, member: discord.Member):
     """User Avatar"""
     await client.reply("{}".format(member.avatar_url))	
+
+@client.command(pass_context=True)
+async def ping(ctx):
+    t = await client.say('Pong!')
+    ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
+    await client.edit_message(t, new_content=':key: Pong! Took: {}ms'.format(int(ms)))
 	
 @client.command()
 async def invite():
