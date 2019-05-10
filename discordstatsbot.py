@@ -421,63 +421,6 @@ async def resetBlackJack(finishedorreset):
     playerNumAces = 0
 
 @client.command()
-async def blackjack():
-    await client.say("""**BLACKJACK""")
-    await resetBlackJack(1)
-    global playingBlackJack, dealerValue, playerValue, dealerCards, playerCards, dealerNumAces, playerNumAces, cardNames, cardValues
-    playingBlackJack = True
-
-    #Simulate dealer's turn
-    while dealerValue < 17:
-        nextCard = random.randrange(1,15)
-        if nextCard is 14: dealerNumAces += 1
-        dealerCards.append(cardnames[nextCard])
-        dealerValue += cardValues[nextCard]
-        while dealerValue > 21:
-            if(dealerNumAces > 0):
-                dealerValue -= 10
-                dealerNumAces -= 1
-            else: break
-
-    #Give player 2 cards
-    for i in range(0,2):
-        nextCard = random.randrange(1, 15)
-        playerValue += cardValues[nextCard]
-        playerCards.append(cardNames[nextCard])
-
-    #print("Dealer value: " + str(dealerValue))
-    #print("Dealer cards: " + str.join(" ", dealerCards))
-    await client.say("Say /hit to be dealt another card, and /stay to stick with your current total value.")
-    await client.say("Dealer's first card is: " + dealerCards[0])
-    await printCards(1) #Print player cards/value
-
-@client.command()
-async def hit():
-    if playingBlackJack is False:
-        await client.say("Type /blackjack to begin a game of blackjack")
-        return
-    global playerValue, playerCards, playerNumAces
-    nextCard = random.randrange(1, 15)
-    if nextCard is 14: playerNumAces += 1
-    playerCards.append(cardNames[nextCard])
-    playerValue += cardValues[nextCard]
-    while playerValue > 21:
-        if (playerNumAces > 0):
-            playerValue -= 10
-            playerNumAces -= 1
-        else:
-            await resetBlackJack(0)
-            break
-    await printCards(1) #Print player cards/value
-
-@client.command()
-async def stay():
-    if playingBlackJack is False:
-        await client.say("Type /blackjack to begin a game of blackjack")
-        return
-    await resetBlackJack(0) #End the game
-
-@client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
        await client.say('https://discord.gg/gRVtKVA')
