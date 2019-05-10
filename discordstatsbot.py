@@ -383,14 +383,6 @@ async def choose(rockPaperOrScissors):
     await client.say("Type /choose `<rock/paper/scissors>` to continue. ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
-async def endRPS():
-    global playingRPS, aiChoice, playerChoice, aiPoints, playerPoints
-    playingRPS = False
-    aiChoice = 0
-    playerChoice = 0
-    aiPoints = 0
-    playerPoints = 0
-
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
