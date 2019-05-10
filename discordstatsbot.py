@@ -338,17 +338,7 @@ async def ping(ctx):
 
 @client.command()
 async def rps():
-    await client.say("""`
-------           -     ------                        -----      -                        
-| ___ \         | |    | --- \                      /  ___|    (_)                       
-| |_/ /---   ---| | __ | |_/ /--- - --   ---  ----| \  --.  --- - --- ---  --- |----|--- 
-|    // _ \ /---| |/ / |  --/ _  |  _ \ / - \|  __|  ---. \/ __| / __/ __|/ _ \|  --| __|
-| |\ \ (_) | (__|   <  | | | (_| | |_) |  --/| |    /\__/ / (__| \__ \__ \ (_) | |  \__ 
-\_| \_\---/ \---|_|\_\ \_|  \__ _|  __/ \--- |_|    \____/ \___|_|___/___/\___/|_|  |___/
-                                 | |                                                    
-                                 |_|                                                                                                                                              
-    `""")
-
+    await client.say(""":game_die: **RockPaperScissors** :game_die:""")                                 
     await client.say("Type /choose rock/paper/scissors to make your choice for the round.  First to 3 points wins!")
     global playingRPS
     playingRPS = True
@@ -373,7 +363,7 @@ async def choose(rockPaperOrScissors):
     #See who won
     await client.say("You picked: " + rockPaperOrScissors + " and AI picked: " + choiceList[aiChoice] + ".")
     if playerChoice is 1 and aiChoice is 3 or playerChoice is 2 and aiChoice is 1 or playerChoice is 3 and aiChoice is 2:
-        playerPoints += 1
+        playerpoints += 1
         await client.say("You win the round!")
     elif playerChoice == aiChoice:
         await client.say("Tie!")
@@ -414,7 +404,7 @@ async def printCards(playerOrComputer):
         await client.say("Dealer value: " + str(dealerValue))
         await client.say("Dealer cards: " + str.join(" ", dealerCards))
 
-async def resetBlackJack(finishedOrReset):
+async def resetBlackJack(finishedorreset):
     global playingBlackJack, dealerValue, playerValue, dealerCards, playerCards, dealerNumAces, playerNumAces, cardNames, cardValues
     if finishedOrReset is 0:
         await printCards(3) #Print both player and AI's values and cards
