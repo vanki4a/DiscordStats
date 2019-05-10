@@ -391,35 +391,6 @@ async def endRPS():
     aiPoints = 0
     playerPoints = 0
 
-async def printCards(playerOrComputer):
-    if playerOrComputer is 1:
-        await client.say("Your value: " + str(playerValue))
-        await client.say("Your cards: " + str.join(" ", playerCards))
-    elif playerOrComputer is 2:
-        await client.say("Dealer value: " + str(dealerValue))
-        await client.say("Dealer cards: " + str.join(" ", dealerCards))
-    elif playerOrComputer is 3:
-        await client.say("Your value: " + str(playerValue))
-        await client.say("Your cards: " + str.join(" ", playerCards))
-        await client.say("Dealer value: " + str(dealerValue))
-        await client.say("Dealer cards: " + str.join(" ", dealerCards))
-
-async def resetBlackJack(finishedorreset):
-    global playingBlackJack, dealerValue, playerValue, dealerCards, playerCards, dealerNumAces, playerNumAces, cardNames, cardValues
-    if finishedOrReset is 0:
-        await printCards(3) #Print both player and AI's values and cards
-        if(playerValue > 21 or playerValue <= 21 and dealerValue <= 21 and playerValue < dealerValue):
-            await client.say("You lose!")
-        elif(dealerValue > 21 or playerValue <= 21 and dealerValue <= 21 and playerValue > dealerValue):
-            await client.say("You win!")
-        playingBlackJack = False
-    dealerValue = 0
-    playerValue = 0
-    dealerCards = []
-    playerCards = []
-    dealerNumAces = 0
-    playerNumAces = 0
-
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
