@@ -432,14 +432,7 @@ async def resetBlackJack(finishedOrReset):
 
 @client.command()
 async def blackjack():
-    await client.say("""`
- _     _            _     _            _    
-| |__ | | __ _  ___| | __(_) __ _  ___| | __
-|  _ \| |/ _  |/ __| |/ /| |/ _  |/ __| |/ /
-| |_) | | (_| | (__|   < | | (_| | (__|   < 
-|_ __/|_|\__,_|\___|_|\_\/ |\__ _|\___|_|\_
-                       |__/                                                                           
-    `""")
+    await client.say("""**BLACKJACK""")
     await resetBlackJack(1)
     global playingBlackJack, dealerValue, playerValue, dealerCards, playerCards, dealerNumAces, playerNumAces, cardNames, cardValues
     playingBlackJack = True
@@ -448,7 +441,7 @@ async def blackjack():
     while dealerValue < 17:
         nextCard = random.randrange(1,15)
         if nextCard is 14: dealerNumAces += 1
-        dealerCards.append(cardNames[nextCard])
+        dealerCards.append(cardnames[nextCard])
         dealerValue += cardValues[nextCard]
         while dealerValue > 21:
             if(dealerNumAces > 0):
