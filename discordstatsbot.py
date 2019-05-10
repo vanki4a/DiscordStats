@@ -335,7 +335,165 @@ async def ping(ctx):
     t = await client.say('Pong!')
     ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
     await client.edit_message(t, new_content=':key: Pong! Took: {}ms'.format(int(ms)))
-	
+
+@client.command()
+async def rps():
+    await client.say("""`
+------           -     ------                        -----      -                        
+| ___ \         | |    | --- \                      /  ___|    (_)                       
+| |_/ /---   ---| | __ | |_/ /--- - --   ---  ----| \  --.  --- - --- ---  --- |----|--- 
+|    // _ \ /---| |/ / |  --/ _  |  _ \ / - \|  __|  ---. \/ __| / __/ __|/ _ \|  --| __|
+| |\ \ (_) | (__|   <  | | | (_| | |_) |  --/| |    /\__/ / (__| \__ \__ \ (_) | |  \__ 
+\_| \_\---/ \---|_|\_\ \_|  \__ _|  __/ \--- |_|    \____/ \___|_|___/___/\___/|_|  |___/
+                                 | |                                                    
+                                 |_|                                                                                                                                              
+    `""")
+
+    await client.say("Type /choose rock/paper/scissors to make your choice for the round.  First to 3 points wins!")
+    global playingRPS
+    playingRPS = True
+
+@client.command()
+async def choose(rockPaperOrScissors):
+    global playingRPS, aiChoice, playerChoice, aiPoints, playerPoints
+
+    if playingRPS is False:
+        await client.say("Type /rps to play a game of rock paper scissors!")
+        return
+
+    #AI choice
+    aiChoice = random.randrange(1,4)
+    choiceList = {1:"rock", 2:"paper", 3:"scissors"}
+
+    #Player choice
+    if str.lower(rockPaperOrScissors) == "rock": playerChoice = 1
+    if str.lower(rockPaperOrScissors) == "paper": playerChoice = 2
+    if str.lower(rockPaperOrScissors) == "scissors": playerChoice = 3
+
+    #See who won
+    await client.say("You picked: " + rockPaperOrScissors + " and AI picked: " + choiceList[aiChoice] + ".")
+    if playerChoice is 1 and aiChoice is 3 or playerChoice is 2 and aiChoice is 1 or playerChoice is 3 and aiChoice is 2:
+        playerPoints += 1
+        await client.say("You win the round!")
+    elif playerChoice == aiChoice:
+        await client.say("Tie!")
+    else:
+        aiPoints += 1
+        await client.say("AI wins the round!")
+
+    #End game if someone hit 3 points
+    if playerPoints == 3:
+        await client.say("You hit 3 points.  You win!")
+        await endRPS()
+        return
+    if aiPoints == 3:
+        await client.say("AI hit 3 points.  You lose!")
+        await endRPS()
+        return
+    await client.say("Type /choose `<rock/paper/scissors>` to continue. ")
+    await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
+
+async def endRPS():
+    global playingRPS, aiChoice, playerChoice, aiPoints, playerPoints
+    playingRPS = False
+    aiChoice = 0
+    playerChoice = 0
+    aiPoints = 0
+    playerPoints = 0
+
+async def printCards(playerOrComputer):
+    if playerOrComputer is 1:
+        await client.say("Your value: " + str(playerValue))
+        await client.say("Your cards: " + str.join(" ", playerCards))
+    elif playerOrComputer is 2:
+        await client.say("Dealer value: " + str(dealerValue))
+        await client.say("Dealer cards: " + str.join(" ", dealerCards))
+    elif playerOrComputer is 3:
+        await client.say("Your value: " + str(playerValue))
+        await client.say("Your cards: " + str.join(" ", playerCards))
+        await client.say("Dealer value: " + str(dealerValue))
+        await client.say("Dealer cards: " + str.join(" ", dealerCards))
+
+async def resetBlackJack(finishedOrReset):
+    global playingBlackJack, dealerValue, playerValue, dealerCards, playerCards, dealerNumAces, playerNumAces, cardNames, cardValues
+    if finishedOrReset is 0:
+        await printCards(3) #Print both player and AI's values and cards
+        if(playerValue > 21 or playerValue <= 21 and dealerValue <= 21 and playerValue < dealerValue):
+            await client.say("You lose!")
+        elif(dealerValue > 21 or playerValue <= 21 and dealerValue <= 21 and playerValue > dealerValue):
+            await client.say("You win!")
+        playingBlackJack = False
+    dealerValue = 0
+    playerValue = 0
+    dealerCards = []
+    playerCards = []
+    dealerNumAces = 0
+    playerNumAces = 0
+
+@client.command()
+async def blackjack():
+    await client.say("""`
+ _     _            _     _            _    
+| |__ | | __ _  ___| | __(_) __ _  ___| | __
+|  _ \| |/ _  |/ __| |/ /| |/ _  |/ __| |/ /
+| |_) | | (_| | (__|   < | | (_| | (__|   < 
+|_ __/|_|\__,_|\___|_|\_\/ |\__ _|\___|_|\_
+                       |__/                                                                           
+    `""")
+    await resetBlackJack(1)
+    global playingBlackJack, dealerValue, playerValue, dealerCards, playerCards, dealerNumAces, playerNumAces, cardNames, cardValues
+    playingBlackJack = True
+
+    #Simulate dealer's turn
+    while dealerValue < 17:
+        nextCard = random.randrange(1,15)
+        if nextCard is 14: dealerNumAces += 1
+        dealerCards.append(cardNames[nextCard])
+        dealerValue += cardValues[nextCard]
+        while dealerValue > 21:
+            if(dealerNumAces > 0):
+                dealerValue -= 10
+                dealerNumAces -= 1
+            else: break
+
+    #Give player 2 cards
+    for i in range(0,2):
+        nextCard = random.randrange(1, 15)
+        playerValue += cardValues[nextCard]
+        playerCards.append(cardNames[nextCard])
+
+    #print("Dealer value: " + str(dealerValue))
+    #print("Dealer cards: " + str.join(" ", dealerCards))
+    await client.say("Say /hit to be dealt another card, and /stay to stick with your current total value.")
+    await client.say("Dealer's first card is: " + dealerCards[0])
+    await printCards(1) #Print player cards/value
+
+@client.command()
+async def hit():
+    if playingBlackJack is False:
+        await client.say("Type /blackjack to begin a game of blackjack")
+        return
+    global playerValue, playerCards, playerNumAces
+    nextCard = random.randrange(1, 15)
+    if nextCard is 14: playerNumAces += 1
+    playerCards.append(cardNames[nextCard])
+    playerValue += cardValues[nextCard]
+    while playerValue > 21:
+        if (playerNumAces > 0):
+            playerValue -= 10
+            playerNumAces -= 1
+        else:
+            await resetBlackJack(0)
+            break
+    await printCards(1) #Print player cards/value
+
+@client.command()
+async def stay():
+    if playingBlackJack is False:
+        await client.say("Type /blackjack to begin a game of blackjack")
+        return
+    await resetBlackJack(0) #End the game
+
 @client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
