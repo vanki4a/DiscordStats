@@ -386,20 +386,6 @@ async def choose(rockPaperOrScissors):
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
 @client.command()
-async def repeat(times : int, content='repeating...'):
-    """Repeats a message multiple times."""
-    for i in range(times):
-        await client.say(content)
-
-if __name__ == "__main__":
-    for extension in startup_extensions:
-        try:
-            client.load_extension(extension)
-        except Exception as e:
-            exc = '{}: {}'.format(type(e).__name__, e)
-            print('Failed to load extension {}\n{}'.format(extension, exc))
-
-@client.command()
 async def invite():
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
        await client.say('https://discord.gg/gRVtKVA')
