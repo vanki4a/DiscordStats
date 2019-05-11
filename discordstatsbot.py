@@ -8,6 +8,7 @@ import colorsys
 import random
 import os
 import time
+import io
 import aiohttp
 import urllib, json
 from discord.voice_client import VoiceClient
