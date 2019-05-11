@@ -32,15 +32,6 @@ async def on_ready():
 	print(client.user.id)      
 	client.loop.create_task(status_task())
 
-@client.event
-async def on_member_join(member):
-    await client.send_message(member, 'Prompt.')
-    m = await client.wait_for_message(author=member, channel=member)
-    if m.content == 'key':
-        # give the user the role
-        await client.send_message(member, 'Role added')
-    else:
-        await client.send_message(member, 'Incorrect key')	
 	
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
