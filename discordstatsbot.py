@@ -8,6 +8,7 @@ import colorsys
 import random
 import os
 import time
+import aiohttp
 import urllib, json
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
