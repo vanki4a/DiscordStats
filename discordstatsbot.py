@@ -200,7 +200,6 @@ async def unbanall(ctx):
 
 @commands.has_permissions(manage_roles=True)     
 async def role(ctx, user: discord.Member, *, role: discord.Role = None):
-    """Give and remove user roles."""
         if role is None:
             return await client.say("You haven't specified a role! ")
 
