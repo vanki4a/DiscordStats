@@ -332,14 +332,6 @@ async def square(number):
 async def avatar(ctx, member: discord.Member):
     """User Avatar"""
     await client.reply("{}".format(member.avatar_url))	
-
-@client.command(pass_context=True)
-async def about(ctx):
-    embed = discord.Embed(title="About for", description="Carbon", color=0x00ff00)
-    embed.set_footer(text="Copyright@UK Soft")
-    embed.set_author(name=" Developer- ∞ 𝓐 𝓶 𝓷 𝓮 𝓼 𝓲 𝓪#8798)
-    embed.add_field(name="Donate here-patreon.com/carbonbot", value="Thanks for adding our bot", inline=True)
-    await client.say(embed=embed)
 	
 @client.command(pass_context=True)
 async def ping(ctx):
