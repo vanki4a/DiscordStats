@@ -125,6 +125,7 @@ async def userinfo(ctx, user: discord.Member):
 @client.command(pass_context = True)
 @commands.has_permissions(manage_nicknames=True)     
 async def setnick(ctx, user: discord.Member, *, nickname):
+    """<user> <nickname>"""
     await client.change_nickname(user, nickname)
     await client.delete_message(ctx.message)
 
