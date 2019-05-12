@@ -125,14 +125,12 @@ async def userinfo(ctx, user: discord.Member):
 @client.command(pass_context = True)
 @commands.has_permissions(manage_nicknames=True)     
 async def setnick(ctx, user: discord.Member, *, nickname):
-    """<user> <nickname>"""
     await client.change_nickname(user, nickname)
     await client.delete_message(ctx.message)
 
 @client.command(pass_context=True)  
 @commands.has_permissions(ban_members=True)      
 async def ban(ctx,user:discord.Member): 
-    """<user> <reason>"""
     if user.server_permissions.ban_members:
         await client.say('**:x: I can`t ban this user.**')
         return
@@ -164,7 +162,7 @@ async def bans(ctx):
 
 
 async def unban(ctx):
-    """<user>"""
+   
     ban_list = await client.get_bans(ctx.message.server)
 
     # Show banned users
@@ -189,7 +187,6 @@ async def unban(ctx):
 @commands.has_permissions(kick_members=True)
 
 async def unbanall(ctx):
-    """Unban all users."""
     server=ctx.message.server
     ban_list=await client.get_bans(server)
     await client.say('Unbanning {} members'.format(len(ban_list)))
@@ -214,7 +211,6 @@ async def role(ctx, user: discord.Member, *, role: discord.Role = None):
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
 async def say(ctx, *, msg = None):
-    """<text>"""
     await client.delete_message(ctx.message)
 
     if not msg: await client.say("Please specify a message to send")
@@ -338,14 +334,12 @@ async def avatar(ctx, member: discord.Member):
 
 @client.command(pass_context=True)
 async def ping(ctx):
-    """Your ping"""
     t = await client.say('Pong!')
     ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
     await client.edit_message(t, new_content=':key: Pong! Took: {}ms'.format(int(ms)))
 
 @client.command()
 async def rps():
-    """Choose rock/paper/scissors and play"""
     await client.say(""":game_die: **RockPaperScissors** :game_die:""")                                 
     await client.say("Type /choose rock/paper/scissors to make your choice for the round.  First to 3 points wins!")
     global playingRPS
@@ -393,7 +387,6 @@ async def choose(rockPaperOrScissors):
 
 @client.command()
 async def invite():
-    """Invite bot to your server"""
        await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
        await client.say('https://discord.gg/gRVtKVA')
       
