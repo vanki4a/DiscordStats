@@ -224,9 +224,7 @@ async def say(ctx, *, msg = None):
 @client.command(pass_context = True)
 @commands.has_permissions(manage_messages=True)  
 async def clear(ctx, number):
-    """Clear messages."""
- 
-    if ctx.message.author.server_permissions.manage_messages:
+  if ctx.message.author.server_permissions.manage_messages:
          mgs = [] #Empty list to put all the messages in the log
          number = int(number) #Converting the amount of messages to delete to an integer
     async for x in client.logs_from(ctx.message.channel, limit = number+1):
@@ -248,7 +246,6 @@ async def clear(ctx, number):
 
 @client.command(pass_context=True)
 async def poll(ctx, question, *options: str):
-    """<text>"""
         if len(options) <= 1:
             await client.say('You need more than one option to make a poll!')
             return
@@ -274,7 +271,6 @@ async def poll(ctx, question, *options: str):
 	
 @client.command(pass_context=True)
 async def guess(ctx, number):
-    """<number> 1-10"""
     try:
         arg = random.randint(1, 10)
     except ValueError:
@@ -285,8 +281,6 @@ async def guess(ctx, number):
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
 async def kick(ctx,user:discord.Member):
-    """<kick> <user> <reason>"""
-
     if user.server_permissions.kick_members:
         await client.say('**:x: I can`t kick that user.**')
         return
@@ -304,7 +298,6 @@ async def kick(ctx,user:discord.Member):
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)
 async def getuser(ctx, role: discord.Role = None):
-    """<role>"""
     if role is None:
         await client.say('**There is no "STAFF" role on this server!**')
         return
@@ -319,7 +312,6 @@ async def getuser(ctx, role: discord.Role = None):
 @client.command(pass_context = True)
 @commands.has_permissions(kick_members=True)
 async def warn(ctx, userName: discord.User, *, message:str): 
-    """<user> <reason>"""
     await client.send_message(userName, "You have been warned for ``<->`` **{}**".format(message))
     await client.say(":white_check_mark: {0} Has been warned! Reason ``<->`` **{1}** ".format(userName,message))
     pass
@@ -336,7 +328,6 @@ async def roles(context):
 	
 @client.command()
 async def square(number):
-    """Square on number."""
     squared_value = int(number) * int(number)
     await client.say(str(number) + " squared is " + str(squared_value))
 
