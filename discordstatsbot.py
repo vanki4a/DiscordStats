@@ -223,7 +223,7 @@ async def clear(ctx, number):
   if ctx.message.author.server_permissions.manage_messages:
          mgs = [] #Empty list to put all the messages in the log
          number = int(number) #Converting the amount of messages to delete to an integer
-    async for x in client.logs_from(ctx.message.channel, limit = number+1):
+       async for x in client.logs_from(ctx.message.channel, limit = number+1):
         mgs.append(x)            
        
     try:
