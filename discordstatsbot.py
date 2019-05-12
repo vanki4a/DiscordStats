@@ -386,9 +386,14 @@ async def choose(rockPaperOrScissors):
     await client.say("Type /choose `<rock/paper/scissors>` to continue. ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
-@client.command()
-async def invite():
-       await client.say('https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot')
-       await client.say('https://discord.gg/gRVtKVA')
+@client.command(pass_context = True)
+async def invite(ctx):
+    author = ctx.message.author
+    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+    embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+    embed.add_field(name = 'Join in support server! ',value =' **https://discord.gg/dp6Em5q** ',inline = False)
+    embed.add_field(name = 'Invite! ',value =' **https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot** ',inline = False)	
+    await client.send_message(author,embed=embed)
+    await client.say('📨 Check DMs! ')
       
 client.run(os.getenv('Token'))
