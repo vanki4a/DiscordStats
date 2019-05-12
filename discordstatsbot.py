@@ -216,20 +216,20 @@ async def say(ctx, *, msg = None):
     if not msg: await client.say("Please specify a message to send")
     else: await client.say(msg)
     return
-
+ 
 @client.command(pass_context = True)
 @commands.has_permissions(manage_messages=True)  
 async def clear(ctx, number):
-  
-  if ctx.message.author.server_permissions.manage_messages:
+ 
+    if ctx.message.author.server_permissions.manage_messages:
          mgs = [] #Empty list to put all the messages in the log
          number = int(number) #Converting the amount of messages to delete to an integer
-  async for x in client.logs_from(ctx.message.channel, limit = number+1):
+    async for x in client.logs_from(ctx.message.channel, limit = number+1):
         mgs.append(x)            
        
     try:
         await client.delete_messages(mgs)          
-        await client.say(str(number)+' messages deleted.')
+        await client.say(str(number)+' messages deleted')
      
     except discord.Forbidden:
         await client.say(embed=Forbidden)
@@ -240,7 +240,7 @@ async def clear(ctx, number):
    
  
     await client.delete_messages(mgs)
-
+	
 @client.command(pass_context=True)
 async def poll(ctx, question, *options: str):
         if len(options) <= 1:
