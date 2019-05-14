@@ -333,7 +333,6 @@ async def avatar(ctx, member: discord.Member):
     """User Avatar"""
     await client.reply("{}".format(member.avatar_url))	
 
-
 @client.command(pass_context=True, hidden=True)
 async def strike(context):
 	usr = context.message.mentions[0]
