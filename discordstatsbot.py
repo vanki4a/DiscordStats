@@ -339,6 +339,13 @@ async def ping(ctx):
     ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
     await client.edit_message(t, new_content=':key: Pong! Took: {}ms'.format(int(ms)))
 
+@client.command(pass_context=True)
+async def coinflip(ctx):
+    variable = [
+        "head",
+        "tail",]
+    await client.say(ctx.message.channel, "{}".format(random.choice(variable)))
+
 @client.command()
 async def rps():
     await client.say(""":game_die: **RockPaperScissors** :game_die:""")                                 
