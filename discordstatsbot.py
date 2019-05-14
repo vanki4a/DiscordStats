@@ -11,6 +11,9 @@ import time
 import io
 import aiohttp
 import urllib, json
+from profanity import profanity
+from tinydb import TinyDB, Query
+from tinydb.operations import delete,increment
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
 
