@@ -11,8 +11,6 @@ import time
 import io
 import aiohttp
 import urllib, json
-from tinydb import TinyDB, Query
-from tinydb.operations import delete,increment
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
 
@@ -333,20 +331,7 @@ async def square(number):
 @client.command(pass_context=True, no_pm=True)
 async def avatar(ctx, member: discord.Member):
     """User Avatar"""
-    await client.reply("{}".format(member.avatar_url))	
-
-@client.command(pass_context=True, hidden=True)
-async def strike(context):
-	usr = context.message.mentions[0]
-	if db.contains(Users.id ==usr.id):
-			if db.contains((Users.id == usr.id) & (Users.swears == 2)):
-				await client.kick(usr)
-				db.update({'swears': 0}, Users.id ==usr.id)
-			else:
-				db.update(increment('swears'), Users.id == usr.id)
-	else:
-		db.insert({'id': usr.id, 'swears': 0})
-	await client.send_message(usr,"You have recived a strike if you recive three strikes you will be kicked!")	
+    await client.reply("{}".format(member.avatar_url))		
 	
 @client.command(pass_context=True)
 async def ping(ctx):
