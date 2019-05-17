@@ -32,20 +32,6 @@ async def on_ready():
 	print(client.user.id)      
 	client.loop.create_task(status_task())
 
-@client.event
-async def on_guild_join(g):
-    success = False
-    i = 0
-    while not success:
-        try:
-            await g.channels[i].send(f"Hello! Thanks for inviting me to your server.For more help, use `/help`.")
-        except (discord.Forbidden, AttributeError):
-            i += 1
-        except IndexError:
-            # if the server has no channels, doesn't let the bot talk, or all vc/categories
-            pass
-        else:
-            success = True
 	
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
