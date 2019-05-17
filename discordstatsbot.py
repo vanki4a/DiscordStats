@@ -340,6 +340,12 @@ async def ping(ctx):
     await client.edit_message(t, new_content=':key: Pong! Took: {}ms'.format(int(ms)))
 
 @client.command()
+async def time(ctx):
+    """Displays bot uptime."""
+    global start_time
+    await ctx.send(timedelta_str(datetime.datetime.now() - start_time))
+
+@client.command()
 async def rps():
     await client.say(""":game_die: **RockPaperScissors** :game_die:""")                                 
     await client.say("Type /choose rock/paper/scissors to make your choice for the round.  First to 3 points wins!")
