@@ -386,26 +386,6 @@ async def choose(rockPaperOrScissors):
     await client.say("Type /choose `<rock/paper/scissors>` to continue. ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
-@client.command(aliases=['howhot', 'hot'])
-async def hotcalc(self, ctx, *, user: discord.Member = None):
-        """ Returns a random percent for how hot is a discord user """
-        if user is None:
-            user = ctx.author
-
-        random.seed(user.id)
-        r = random.randint(1, 100)
-        hot = r / 1.17
-
-        emoji = "💔"
-        if hot > 25:
-            emoji = "❤"
-        if hot > 50:
-            emoji = "💖"
-        if hot > 75:
-            emoji = "💞"
-
-        await ctx.send(f"**{user.name}** is **{hot:.2f}%** hot {emoji}")
-
 @client.command(pass_context = True)
 async def invite(ctx):
     author = ctx.message.author
