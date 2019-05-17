@@ -387,8 +387,8 @@ async def choose(rockPaperOrScissors):
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
 @client.command(aliases=['slots', 'bet'])
-    @commands.cooldown(rate=1, per=3.0, type=commands.BucketType.user)
-    async def slot(self, ctx):
+@commands.cooldown(rate=1, per=3.0, type=commands.BucketType.user)
+async def slot(self, ctx):
         """ Roll the slot machine """
         emojis = "🍎🍊🍐🍋🍉🍇🍓🍒"
         a = random.choice(emojis)
