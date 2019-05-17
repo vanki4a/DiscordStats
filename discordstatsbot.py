@@ -339,6 +339,18 @@ async def ping(ctx):
     ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
     await client.edit_message(t, new_content=':key: Pong! Took: {}ms'.format(int(ms)))
 
+
+@client.command()
+async def fight(self, ctx, user:str=None, *, weapon:str=None):
+    """Fight someone with something"""
+     if user is None or user.lower() == ctx.author.mention or user == ctx.author.name.lower() or ctx.guild is not None and ctx.author.nick is not None and user == ctx.author.nick.lower():
+            await ctx.send("{} fought themself but only ended up in a mental hospital!".format(ctx.author.mention))
+            return
+     if weapon is None:
+            await ctx.send("{0} tried to fight {1} with nothing so {1} beat the breaks off of them!".format(ctx.author.mention, user))
+            return
+        await ctx.send("{} used **{}** on **{}** {}".format(ctx.author.mention, weapon, user, random.choice(fight_results).replace("%user%", user).replace("%attacker%", ctx.author.mention)))
+
 @client.command()
 async def rps():
     await client.say(""":game_die: **RockPaperScissors** :game_die:""")                                 
