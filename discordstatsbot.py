@@ -386,13 +386,6 @@ async def choose(rockPaperOrScissors):
     await client.say("Type /choose `<rock/paper/scissors>` to continue. ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
-
-@client.command(pass_context = True)
-async def dmall(ctx, *, msg: str):
-    for server_member in ctx.message.server.members:
-      await client.send_message(server_member, msg)
-      await client.delete_message(ctx.message)
-
 @client.command(pass_context = True)
 async def invite(ctx):
     author = ctx.message.author
