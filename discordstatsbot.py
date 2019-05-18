@@ -331,7 +331,7 @@ async def square(number):
 @client.command(pass_context=True, no_pm=True)
 async def avatar(ctx, member: discord.Member):
     """User Avatar"""
-    await client.reply("{}".format(member.avatar))		
+    await client.reply("{}".format(member.avatar_url))		
 	
 @client.command(pass_context=True)
 async def ping(ctx):
