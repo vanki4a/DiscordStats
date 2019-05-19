@@ -396,7 +396,7 @@ async def invite(ctx):
     await client.send_message(author,embed=embed)
     await client.say('📨 Check DMs! ')
 
-@clint.command(hidden=True, no_pm=True, pass_context=True)
+@client.command(hidden=True, no_pm=True, pass_context=True)
 async def load(ctx, extension_name : str):
 	"""Loads an extension."""
 	if str(ctx.message.author.top_role) == "Admin":
