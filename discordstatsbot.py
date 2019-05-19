@@ -1,4 +1,6 @@
 import discord
+from discord.ext import commands
+from commands.ext.utils import GetGiveawayStat
 from discord.ext.commands import Bot
 from discord.ext import commands
 from discord.ext.commands.cooldowns import BucketType
@@ -11,8 +13,6 @@ import time
 import io
 import aiohttp
 import urllib, json
-from discord.ext import commands
-from commands.ext.utils import GetGiveawayStatus, AddEntrant
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
 
