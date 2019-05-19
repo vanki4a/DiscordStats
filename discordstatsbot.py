@@ -11,6 +11,8 @@ import time
 import io
 import aiohttp
 import urllib, json
+from discord.ext import commands
+from commands.ext.utils import GetGiveawayStatus, AddEntrant
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
 
@@ -395,5 +397,46 @@ async def invite(ctx):
     embed.add_field(name = 'Invite! ',value =' **https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot** ',inline = False)	
     await client.send_message(author,embed=embed)
     await client.say('📨 Check DMs! ')
-      
+
+@clint.command(hidden=True, no_pm=True, pass_context=True)
+async def load(ctx, extension_name : str):
+	"""Loads an extension."""
+	if str(ctx.message.author.top_role) == "Admin":
+		try:
+			client.load_extension(extension_name)
+		except (AttributeError, ImportError) as e:
+			await client.say("```py\n{}: {}\n```".format(type(e).__name__, str(e)))
+			return
+		await client.say("{} loaded.".format(extension_name))
+	else:
+		await client.send_message(message.author, "You are not authorized to use that command.")
+
+@client.command(hidden=True, no_pm=True, pass_context=True)
+async def unload(ctx, extension_name : str):
+	"""Unloads an extension."""
+	if str(ctx.message.author.top_role) == "Admin":
+		client.unload_extension(extension_name)
+		await client.say("{} unloaded.".format(extension_name))
+	else:
+		await client.send_message(message.author, "You are not authorized to use that command.")
+
+@client.event
+async def on_message(message):
+	if message.author == client.user:
+		return
+	if message.content.startswith("!") and str(message.author.top_role) == "Admin":
+		await client.process_commands(message)
+	if await GetGiveawayStatus():
+		if str(message.author.top_role) != "Admin":
+			await AddEntrant(message)
+
+if __name__ == "__main__":
+    for extension in startup_extensions:
+        try:
+            client.load_extension(extension)
+        except Exception as e:
+            exc = '{}: {}'.format(type(e).__name__, e)
+            print('Failed to load extension {}\n{}'.format(extension, exc))
+
+     
 client.run(os.getenv('Token'))
