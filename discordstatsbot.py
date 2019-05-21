@@ -337,7 +337,7 @@ async def avatar(ctx, member: discord.Member):
 async def ping(ctx):
     t = await client.say('Pong!')
     ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
-    await client.edit_message(t, new_content=':timer: Pong! Client: {}ms API: \`${client.ws.ping}ms\'.format(int(ms)))
+    await client.edit_message(t, new_content=':timer: Pong! Client: {}ms API: ${client.ws.ping}ms'.format(int(ms)))
 
 @client.command()
 async def rps():
