@@ -15,10 +15,6 @@ from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
 from typing import Union, List, Optional
 
-client = Client('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNDQ1MTk4MTIzODM3NTU0Njg4IiwiaWF0IjoxNTU4NDU4NTc2fQ.xJgF4Axa91Vd3M5fuomzAeqJrJw-hwHbX1tPO13-rpI')
-guild = Guild(0) # Replace 0 with a Discord guild id
-user = User(0)   # Replace 0 with a Discord user id
-
 class RateLimit:
     """A representation of a rate limit. Allows for access to rate limit info."""
     def __init__(self, limit: int, remaining: int, reset):
