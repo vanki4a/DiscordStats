@@ -386,16 +386,6 @@ async def choose(rockPaperOrScissors):
     await client.say("Type /choose `<rock/paper/scissors>` to continue. ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
-@client.command(pass_context=True, hidden=True)
-async def refresh(ctx, extension_name:str):
-	if ctx.message.author.id:
-		client.unload_extension(extension_name)
-		client.load_extension(extension_name)
-		await client.say("*Module refreshed*")
-	else:
-		await client.say("*You don't have permission to refresh this module*")
-
-
 @client.command(pass_context = True)
 async def invite(ctx):
     author = ctx.message.author
