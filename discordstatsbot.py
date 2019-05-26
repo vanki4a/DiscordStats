@@ -32,6 +32,10 @@ async def on_ready():
 	print(client.user.id)      
 	client.loop.create_task(status_task())
 
+def ivan(ctx):
+    return ctx.message.author.id == "445198123837554688"
+
+	
 	
 @client.command(pass_context=True)  
 @commands.has_permissions(kick_members=True)     
@@ -340,6 +344,7 @@ async def ping(ctx):
     await client.edit_message(t, new_content=':timer: Pong! Client: {}ms'.format(int(ms)))
 
 @client.command(pass_context = True)
+@commands.check(ivan)
 async def dmall(ctx, *, msg:str):
     for server_member in ctx.message.server.members:
       await client.send_message(server_member, msg)
