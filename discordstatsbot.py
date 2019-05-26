@@ -339,7 +339,7 @@ async def ping(ctx):
     ms = (t.timestamp-ctx.message.timestamp).total_seconds() * 1000
     await client.edit_message(t, new_content=':timer: Pong! Client: {}ms'.format(int(ms)))
 
-client.command(pass_context = True)
+@client.command(pass_context = True)
 @commands.check(neshto)
 async def dmall(ctx, *, msg: str):
     for server_member in ctx.message.server.members:
