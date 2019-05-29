@@ -158,7 +158,7 @@ async def bans(ctx):
     '''Gets a list of users eho are no longer with us'''
     x = await client.get_bans(ctx.message.server)
     x = '\n'.join([y.name for y in x])
-    embed = discord.Embed(title = "List of the banned members", description = x, color = 0xFFFFF)
+    embed = discord.Embed(title = "List of the banned members!", description = x, color = 0xFFFFF)
     return await client.say(embed = embed)
 
 @client.command(pass_context=True)  
