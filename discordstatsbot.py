@@ -387,7 +387,7 @@ async def choose(rockPaperOrScissors):
         await client.say("AI hit 3 points.  You lose!")
         await endRPS()
         return
-    await client.say("Type /choose `<rock/paper/scissors>` to continue. ")
+    await client.say("*Type /choose `<rock/paper/scissors>` to continue.* ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
 @client.command(pass_context = True)
