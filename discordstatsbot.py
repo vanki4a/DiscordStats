@@ -32,9 +32,7 @@ async def on_ready():
 	print(client.user.id)      
 	client.loop.create_task(status_task())
 
-def ivan(ctx):
-    return ctx.message.author.id == "445198123837554688"
-
+ 
 	
 	
 @client.command(pass_context=True)  
