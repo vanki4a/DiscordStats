@@ -10,6 +10,7 @@ import os
 import time
 import io
 import aiohttp
+import sqlite3
 import urllib, json
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
