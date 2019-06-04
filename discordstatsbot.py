@@ -388,24 +388,6 @@ async def choose(rockPaperOrScissors):
     await client.say("*Type /choose `<rock/paper/scissors>` to continue.* ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
-  @commands.has_permissions(manage_messages=True)
-  @commands.command(pass_context=True, name="lockdown")
-    async def lockdown(self, ctx):
-       """Lock message sending in the channel. Staff only."""
-       try:
-            overwrites_everyone = ctx.message.channel.overwrites_for(self.client.everyone_role)
-            if overwrites_everyone.send_messages == False:
-                await self.client.say("🔒 Channel is already locked down. Use `.unlock` to unlock.")
-                return
-            overwrites_everyone.send_messages = False
-            await self.client.edit_channel_permissions(ctx.message.channel, self.client.everyone_role, overwrites_everyone)
-            await self.client.say("🔒 Channel locked down. Only staff members may speak. Do not bring the topic to other channels or risk disciplinary actions.")
-            msg = "🔒 **Lockdown**: {0} by {1} | {2}#{3}".format(ctx.message.channel.mention, ctx.message.author.mention, ctx.message.author.name, ctx.message.author.discriminator)
-            await self.bot.send_message(self.client.modlogs_channel, msg)
-       except discord.errors.Forbidden:
-            await self.client.say("💢 I don't have permission to do this.")
-
-
 @client.command(pass_context = True)
 async def invite(ctx):
     author = ctx.message.author
