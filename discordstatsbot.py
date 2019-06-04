@@ -10,7 +10,6 @@ import os
 import time
 import io
 import aiohttp
-import sqlite3
 import urllib, json
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
@@ -388,36 +387,6 @@ async def choose(rockPaperOrScissors):
         return
     await client.say("*Type /choose `<rock/paper/scissors>` to continue.* ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
-
-@client.command(pass_context=True)
-async def rank(ctx):
-    
-    try:
-        _, member = (ctx.message.content).split(' ', 1)
-        member = re.sub("[^0-9]", "", member)
-    except:
-        member = ctx.message.author.id
-    
-    db = sqlite3.connect('data/users.db')
-    c = db.cursor()
-
-    c.execute('SELECT user.*, (SELECT count(*) FROM users AS members WHERE members.rawexp > user.rawexp) as Rank FROM users AS user WHERE id = ?',
-              (ctx.message.author.id, ))
-    
-    user = c.fetchone()
-    db.close()
-
-    rank = str(user[6] + 1)
-
-    embed = discord.Embed(title='{}\'s Information'.format(ctx.message.author.name)) \
-            .set_thumbnail(url=ctx.message.author.avatar_url) \
-            .add_field(name='Rank', value='#' + rank) \
-            .add_field(name='Level', value=user[2]) \
-            .add_field(name='EXP', value='{}/{}'.format(user[3], threshold(user[2]))) \
-            .add_field(name='Raw EXP', value=user[4]) \
-
-    await bot.say(embed=embed)
-
 
 @client.command(pass_context = True)
 async def invite(ctx):
