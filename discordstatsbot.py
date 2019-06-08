@@ -348,7 +348,7 @@ async def ping(ctx):
 @client.command()
 async def rps():
     await client.say(""":game_die: **RockPaperScissors** :game_die:""")                                 
-    await client.say("Type `/choose` rock/paper/scissors to make your choice for the round.  First to 3 points wins!")
+    await client.say("Type `/>choose` rock,paper,scissors to make your choice for the round.  First to 3 points wins!")
     global playingRPS
     playingRPS = True
 
