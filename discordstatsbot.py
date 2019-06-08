@@ -13,7 +13,11 @@ import aiohttp
 import urllib, json
 from discord.voice_client import VoiceClient
 from discord import Game, Embed, Color, Status, ChannelType
-                
+
+Forbidden= discord.Embed(title="Permission Denied", description="1) Please check whether you have permission to perform this action or not. \n2) Please check whether my role has permission to perform this action in this channel or not. \n3) Please check my role position.", color=0x00ff00)
+client = Bot(description="Carbon", command_prefix=">", pm_help = True)
+client.remove_command('help')
+
 client=commands.Bot(command_prefix='>')
 neshto='445198123837554688'
 
