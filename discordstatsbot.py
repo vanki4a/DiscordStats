@@ -392,6 +392,14 @@ async def choose(rockPaperOrScissors):
     await client.say("*Type /choose `<rock/paper/scissors>` to continue.* ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
+@client.command(pass_context=True)
+async def presence(ctx,text:str,type:int):
+	if ctx.message.author.id==(neshto):
+		await client.change_presence(game=discord.Game(name=text,type=type))
+	else:
+			await client.say('**No permissions!**')
+			
+
 @client.command(pass_context = True)
 async def invite(ctx):
     author = ctx.message.author
