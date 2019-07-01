@@ -398,7 +398,7 @@ async def invite(ctx):
     author = ctx.message.author
     r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
     embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-    embed.add_field(name = 'You can join the support server with the following link!',value =' *https://discord.gg/gqeM646* ',inline = False)
+    embed.add_field(name = 'You can join the support server with the following link!',value =' *SOON* ',inline = False)
     embed.add_field(name = 'Invite! ',value =' *https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot* ',inline = False)
     embed.add_field(name = 'Donate! ',value ='*https://www.patreon.com/carbonbot* ',inline = False)
     await client.send_message(author,embed=embed)
