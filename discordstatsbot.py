@@ -392,6 +392,21 @@ async def choose(rockPaperOrScissors):
     await client.say("*Type /choose `<rock/paper/scissors>` to continue.* ")
     await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
 
+@client.command(pass_context = True)
+async def meme(context):
+    meme_list = os.listdir("./memes")
+    rand_numb = random.randint(0, len(meme_list)-1)
+    meme = meme_list[rand_numb]
+    await bot.send_file(context.message.channel,fp="./memes/"+meme ,filename=meme, content="aah, fresh meme!")
+
+@client.command(pass_context = True)
+async def delaware(context):
+    if context.message.author.id == ("445198123837554688"):
+        await bot.say(context.message.author.mention + " is from delaware and therefore sucks balls")
+    else:
+        await bot.say(context.message.author.mention + " is not from delaware and is therefore cool B)")
+
+
 
 @client.command(pass_context = True)
 async def invite(ctx):
