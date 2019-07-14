@@ -24,7 +24,7 @@ ivan='445198123837554688'
 async def status_task():
     while True:
         await client.change_presence(game=discord.Game(name='>help | '+str(len(client.servers))+' servers!',type=3))
-        await asyncio.sleep(5)
+        
 	
 
 	
