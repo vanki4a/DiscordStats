@@ -19,8 +19,7 @@ client = Bot(description="Carbon", command_prefix=">", pm_help = True)
 client.remove_command('help')
 
 client=commands.Bot(command_prefix='>')
-neshto='445198123837554688'
-
+ivan='445198123837554688'
 
 async def status_task():
     while True:
