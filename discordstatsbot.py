@@ -351,46 +351,6 @@ async def rps():
     global playingRPS
     playingRPS = True
 
-@client.command()
-async def choose(rockPaperOrScissors):
-    global playingRPS, aiChoice, playerChoice, aiPoints, playerPoints
-
-    if playingRPS is False:
-        await client.say("Type /rps to play a game of rock paper scissors!")
-        return
-
-    #AI choice
-    aiChoice = random.randrange(1,4)
-    choiceList = {1:"rock", 2:"paper", 3:"scissors"}
-
-    #Player choice
-    if str.lower(rockPaperOrScissors) == "rock": playerChoice = 1
-    if str.lower(rockPaperOrScissors) == "paper": playerChoice = 2
-    if str.lower(rockPaperOrScissors) == "scissors": playerChoice = 3
-
-    #See who won
-    await client.say("You picked: " + rockPaperOrScissors + " and AI picked: " + choiceList[aiChoice] + ".")
-    if playerChoice is 1 and aiChoice is 3 or playerChoice is 2 and aiChoice is 1 or playerChoice is 3 and aiChoice is 2:
-        playerpoints += 1
-        await client.say("You win the round!")
-    elif playerChoice == aiChoice:
-        await client.say("Tie!")
-    else:
-        aiPoints += 1
-        await client.say("AI wins the round!")
-
-    #End game if someone hit 3 points
-    if playerPoints == 3:
-        await client.say("You hit 3 points.  You win!")
-        await endRPS()
-        return
-    if aiPoints == 3:
-        await client.say("AI hit 3 points.  You lose!")
-        await endRPS()
-        return
-    await client.say("*Type /choose `<rock/paper/scissors>` to continue.* ")
-    await client.say("SCORE -> Player: " + str(playerPoints) + " AI: " + str(aiPoints))
-
 @client.command(pass_context = True)
 async def meme(context):
     meme_list = os.listdir("./memes")
