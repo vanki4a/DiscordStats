@@ -381,6 +381,6 @@ async def invite(ctx):
     embed.add_field(name = 'Invite! ',value =' *https://discordapp.com/api/oauth2/authorize?client_id=562959056357294100&permissions=8&scope=bot* ',inline = False)
     embed.add_field(name = 'Donate! ',value ='*https://www.patreon.com/carbonbot* ',inline = False)
     await client.send_message(author,embed=embed)
-    await client.say(':mail: Check DMs! ')
+    await client.say(' :mailbox_with_mail: Check DMs! ')
      
 client.run(os.getenv('Token'))
